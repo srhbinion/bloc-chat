@@ -17,7 +17,7 @@ bChat.config(function($locationProvider, $stateProvider) {
 	$stateProvider
 		.state("landing",{
 			// properties of the state listed in "controller"
-			url: "/index",
+			url: "/",
 			controller:"LandingController",
 			templateUrl:"/templates/landing.html"
 		});
@@ -29,5 +29,5 @@ bChat.config(function($locationProvider, $stateProvider) {
  * @return {}  - 
  */
 bChat.controller("LandingController", ["$scope", function($scope) {
-    $scope.welcome = "Welcome!";
+    $scope.welcome = "Welcome, frans! What is your name:";
 }]);
