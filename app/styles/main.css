@@ -5,77 +5,30 @@
  }
 
 html { 
-    height: 100% /*100 browser window*/
+    height: 100%; /*100 browser window*/
+    background-color: lightgoldenrodyellow;
+    font-family: "courier";
 }
 
-body {
-    font-family: 'Open Sans';
-    color: white;
-    min-height: 100%; /*height of body bust be, min 100% of window*/
+.body {
+    position: relative;
+    float: right;
+    color: orangered;
+    width: 75%; 
 }
 
 .navbar {
-    position: relative;
-    padding: 0.5rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 
+    margin: 3rem;
     /* rgba = supports transparency*/
-    background-color: rgba(101,18,95,0.5);
-    /*adds a third dimension to the placement of an element */
-    z-index: 1;
+    background-color: orangered;
+    color: aliceblue;
+    height: 100%;    
 }
 
-.navbar .logo {
-    position: relative;
-    left: 2rem;
-    cursor: hand; /*Finger Pointing cursor*/
-}
-
-.navbar .links-container{
-    display: table;
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100px;
-    color: white;
-    /*removes text decorations like underlines */
-    text-decoration: none;
-}
-
-.links-container .navbar-link {
-    display: table-cell;
-    position: relative;
-    height: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    /*content centered*/
-    vertical-align: middle;
-    color: white;
-    font-size: 0.625rem;
-    letter-spacing: 0.05rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    /*removes text decorations like underlines*/
-    text-decoration: none;
-    cursor: pointer;
-}
-/*changes color when there is a hover*/
-
-.links-container .navbar-link:hover {
-     color: rgb(233,50,117);
- }
-
-.links-container .navbar-link:active {
-     color: rgb(233,50,117);
-     background-color: white;
- }
-
-.container {
-     margin: 0 auto;
-     max-width: 64rem;
- }
-
-.container.narrow{
-    max-width: 56rem;
-}
 /* Medium and small screens (640px) */
 @media (min-width: 40rem) {
     html { font-size: 112%; } 
@@ -90,17 +43,6 @@ body {
     .column.fourth { width: 25%; }
     .column.flow-opposite { float: right; } 
 }
-
-clearfix:before,
- .clearfix:after {
-     content: " ";
-     display: table;
-}
- 
-.clearfix:after {
-     clear: both;
-}
-/* Large screens (1024px) */
 
 @media (min-width: 64rem) {
      html { font-size: 120%; }
