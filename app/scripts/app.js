@@ -17,7 +17,7 @@ bChat.config(function($locationProvider, $stateProvider) {
 	$stateProvider
 		.state("landing",{
 			// properties of the state listed in "controller"
-			url: "/",
+			url: "/index.html",
 			controller:"LandingController",
 			templateUrl:"/templates/landing.html"
 		});
@@ -29,5 +29,21 @@ bChat.config(function($locationProvider, $stateProvider) {
  * @return {}  - 
  */
 bChat.controller("LandingController", ["$scope", function($scope) {
-    $scope.welcome = "Welcome, frans! What is your name:";
+    $scope.welcome = "Welcome, to Bloc Chat";
 }]);
+
+//query a list of Rooms
+bChat.factory('Room', ['$firebaseArray', function($firebaseArray) {
+  var firebaseRef = new Firebase("https://tqi39uk8hjs.firebaseio-demo.com/");
+}]);
+
+//either query an existing set of data or reference one you intend to populate with data in the future
+bChat.factory('Room', ['$firebaseArray', function($firebaseArray) {
+
+  var firebaseRef = new Firebase("https://tqi39uk8hjs.firebaseio-demo.com/");
+  var rooms = $firebaseArray(firebaseRef.child('rooms'));
+
+  return {
+    all: rooms
+  }
+}])
