@@ -3,15 +3,14 @@
     <div class="hero-content">
         <div class="hero-title">
             <img src="../assets/images/bChat3.png" alt="bloc chat logo">
+            <p>{{messages}}</p>
             <h1 >{{welcome}}</h1>
             <br>
-            <div class="user-bar">
-                <input type="text" id="nameInput" placeholder="enter a username...">
-            </div>
-            <br>
-            <div class="sign-bar" ui-sref="submit">
-                <h4>Let's Chat</h4>
-            </div>
+            <form class="user-bar" ng-submit = "addMessage()">
+                <input type="text" placeholder="enter a username..." ng-model = "message">
+                <br>
+                <input type="submit"> <!--class="sign-bar" -->
+            </form>
         </div>
     </div> 
 </section>
