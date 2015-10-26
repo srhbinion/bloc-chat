@@ -26,12 +26,6 @@ bChat.config(function($locationProvider, $stateProvider) {
 			url: "/sumbit.html",
 			controller:"SumbitController",
 			templateUrl:"/templates/sumbit.html"
-		})
-        .state("account",{
-			// properties of the state listed in "account"
-			url: "/account.html",
-			controller:"AccountController",
-			templateUrl:"/templates/account.html"
 		});
 });
 
@@ -44,27 +38,27 @@ bChat.controller("LandingController", ["$scope", function($scope) {
     $scope.welcome = "Welcome, to Bloc Chat";
 }]);
 
-bChat.controller("SumbitController", ["$scope", function($scope) {
-    $scope.welcome = "Welcome, to Bloc Chat";
+bChat.controller("SumbitController", "$firebaseArray", ["$scope", function($scope, $firebaseArray) {
+    var messageRef = new Firebase("https://radiant-fire-5615.firebaseio.com/");
+    
+    // download the data from a Firebase reference into a (pseudo read-only) array
+    // all server changes are applied in realtime
+    $scope.message = $firebaseArray(messageRef);
+    
+    // create a query for the most recent 30 messages on the server
+    var query = messageRef.orderByChild("timestamp").limitToLast(30);
+    
+    $scope.filteredMessages = $firebaseArray(query);
 }]);
 
-bChat.controller("AccountController", ["$scope", function($scope) {
-    $scope.welcome = "Welcome, to Bloc Chat";
-}]);
-
-//query a list of Rooms
-bChat.factory('Room', ['$firebaseArray', function($firebaseArray) {
-  var firebaseRef = new Firebase("https://tqi39uk8hjs.firebaseio-demo.com/");
-}]);
-
-//either query an existing set of data or reference one you intend to populate with data in the future
-bChat.factory('Room', ['$firebaseArray', function($firebaseArray) {
-
-  var firebaseRef = new Firebase("https://tqi39uk8hjs.firebaseio-demo.com/");
-  
-  var rooms = $firebaseArray(firebaseRef.child('rooms'));
-
-  return {
-    all: rooms
-  };
+bChat.factory("Room", ["$firebaseArray", function ($scope, $firebaseArray) {
+    var firebaseRef = new Firebase("https://radiant-fire-5615.firebaseio.com/");
+    
+    //var rooms = $firebase(firebaseRef); 
+    
+    var rooms = $firebase(firebaseRef.child("rooms"));
+    
+    return {
+        all: rooms
+    };
 }]);
