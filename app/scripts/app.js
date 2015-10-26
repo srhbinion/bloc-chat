@@ -34,22 +34,20 @@ binChat.config(function($locationProvider, $stateProvider) {
  * @return {}  - 
  * @return {}  - 
  */
-binChat.controller("LandingController", ["$scope", function($scope) {
+binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", function($scope, $firebaseArray, Room) {
     $scope.welcome = "Welcome, to Bloc Chat";
+    $scope.chatRooms = Room.all;
 }]);
 
 binChat.controller("SubmitController", ["$scope", function ($scope) {
-
+    
 }]);
 
-binChat.factory('Room', ['$firebaseArray', function($firebaseArray) {
-
+binChat.factory("Room", ['$firebaseArray', function($firebaseArray) {
     var firebaseRef = new Firebase("https://binchat.firebaseio.com/");
-    var rooms = $firebaseArray(firebaseRef.child('rooms'));
+    var rooms = $firebaseArray(firebaseRef.child("rooms"));
 
     return {
-      all: rooms
-      
+      all: rooms 
     }
-
   }]);

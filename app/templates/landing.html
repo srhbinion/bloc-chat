@@ -1,16 +1,23 @@
 <!--get's user name -->
 <section>
-    <div class="hero-content">
+    <div class="hero-content" ng-controller="LandingController">
         <div class="hero-title">
             <img src="../assets/images/bChat3.png" alt="bloc chat logo">
-            <p>{{messages}}</p>
             <h1 >{{welcome}}</h1>
             <br>
             <form class="user-bar" ng-submit = "addMessage()">
-                <input type="text" placeholder="enter a username..." ng-model = "message">
+                <input type="text" placeholder="enter a username...">
                 <br>
                 <input type="submit"> <!--class="sign-bar" -->
             </form>
+            <table>
+                <tr ng-repeat ="rooms in chatRooms">
+                    <td>Chat Rooms</td>
+                    <td>{{ $index + 1 }}</td>
+                    <td>Active Rooms</td>
+                </tr>
+            </table>
+            <br>
         </div>
     </div> 
 </section>

@@ -223,6 +223,10 @@ span{
     text-decoration: none;
 }
 
+.roomName{
+    background-color: blue;
+}
+
 .chat-pannel {
     position: fixed;
     top:75px;
