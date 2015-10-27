@@ -128,11 +128,12 @@ span{
 }
 
 .navbar .nav-list-first {
+    margin: 7%;
     margin-top: 100px;
-    padding: 20px 60px 20px 60px;
+    padding: 5%;
     display: table;
     background-color: #ffc211;
-    width: 100%;
+    width: 250px;
     -webkit-border-radius: 8;
     -moz-border-radius: 3;
     border-radius: 3px;
@@ -142,11 +143,12 @@ span{
 }
 
 .navbar .nav-list {
-    padding: 20px 60px 20px 60px;
-    margin-top: 10px;
     display: table;
+    margin: 7%;
+    margin-left: 20px;
+    padding: 15px;
     background-color: #e33200;
-    width: 100%;
+    width: 250px;
     -webkit-border-radius: 8;
     -moz-border-radius: 3;
     border-radius: 3px;
@@ -211,8 +213,10 @@ span{
     border-radius: 8px;
     color: #ffffff;
     background: #e33200;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-top: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 85%;
     border: solid #d5d5d5 1px;
     opacity: 0.7;
     filter: alpha(opacity=70); /* For IE8 and earlier */
@@ -296,11 +300,11 @@ span{
     border-radius: 8px;
     color: #ffffff;
     font-size: 14px;
-    float: inherit;
+    width: 30%;
     background: #8c264d;
-    padding: 5% 20%;
-    margin-top: 13%;
-    margin-bottom: 13%;
+    padding: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
     border: solid #fdd497 1px;
     text-decoration: none;
 }

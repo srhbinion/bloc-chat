@@ -1,31 +1,38 @@
-<!--get's user name -->
 <section>
+    <nav class="navbar"> 
+        <h7 ui-sref="submit" class="links-container">User Name <br><span>...waiting</span></h7>
+        <!--<ul>
+            <li class="nav-list-first">Create +</li>
+            <li class="nav-list">Room 1: <br><span>Travel</span></li>
+            <li class="nav-list">Room 2: <br><span>Food</span></li>
+        </ul>-->
+        <!-- push a new chat room onto the array -->
+        <form class="nav-list-first" ng-submit = "addMessage()">
+            <input placeholder="Create Room..." ng-model="newMessageText"/>
+            <button class="sign-bar" type="submit">Go!</button><!--class="sign-bar" -->
+        </form>
+        <table ng-repeat="message in messages">
+            <tr class="nav-list">
+                <td><h4>Room {{ $index + 1 }}:<br> Name {{chatRooms}}</h4></td>
+                <!-- DELETE a message -->
+                <td class="btn" ng-click="messages.$remove(message)"><h4>x</h4></td>
+                <!-- edit a message -->
+                <!--<td class="btn" ng-model="message.text" ng-change="messages.$save(message)">change</td>-->
+            </tr>
+        </table>
+    </nav>
+</section>
+<section class="body-pannel">
     <div class="hero-content" ng-controller="LandingController">
         <div class="hero-title">
             <img src="../assets/images/bChat3.png" alt="bloc chat logo">
             <h1 >{{welcome}}</h1>
             <br>
-            <ul>
-                <li ng-repeat="message in messages">
-                <!-- edit a message -->
-                    <input ng-model="message.text" ng-change="messages.$save(message)" />
-                <!-- delete a message -->
-                    <button ng-click="messages.$remove(message)">Delete Message</button>
-                </li>
-            </ul>
-            <!-- push a new message onto the array -->
-            <form class="user-bar" ng-submit = "addMessage()">
-                <input placeholder="enter a username..." ng-model="newMessageText"/>
+            <form class="user-bar">
+                <input placeholder="enter a username..."/>
                 <br>
-                <button type="submit">Add Message</button><!--class="sign-bar" -->
+                <button type="submit">Add User Name</button><!--class="sign-bar" -->
             </form>
-            <table>
-                <tr ng-repeat="message in messages">
-                    <td>Room {{ $index + 1 }}:</td>
-                    <td>Name: {{items[$index ]}}</td>
-                    <td>Name: {{chatRooms}}</td>
-                </tr>
-            </table>
             <br>
         </div>
     </div> 
