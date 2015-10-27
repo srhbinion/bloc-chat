@@ -14,11 +14,12 @@ html {
 
 h1 {
     color: #187e82;
-    font-size: 2rem;
+    font-size: 5rem;
     font-weight: 300;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 0.5rem;
+    letter-spacing: 1.5rem;
+    line-height: 10rem;
 }
 
 h2{
@@ -169,22 +170,28 @@ span{
     bottom: 0px;
     width: 75%;
     background-color: #d5d5d5;
+    background-image: url(../assets/images/homeboaboaKevMunday.png);
 }
 
 .hero-content {
     position: relative;
     min-height: 35rem;
-    margin-top: 2rem;
-    margin-left: 10rem;
-    margin-right: 10rem;
-    margin-bottom: 2rem;
+    margin-top: 15%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 35%;
     background-position: center center;
     background-size: cover; 
     background-color: gainsboro;
+    text-align: center;
+    font-size: 90px;
+    font-family: "impact";
     -webkit-border-radius: 8;
     -moz-border-radius: 3;
     border-radius: 4px;
     border: solid whitesmoke 2px;
+    opacity: 0.7;
+    filter: alpha(opacity=70); /* For IE8 and earlier */
 } 
  
 .hero-content .hero-title {
