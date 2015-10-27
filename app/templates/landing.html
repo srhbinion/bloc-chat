@@ -5,16 +5,24 @@
             <img src="../assets/images/bChat3.png" alt="bloc chat logo">
             <h1 >{{welcome}}</h1>
             <br>
+            <ul>
+                <li ng-repeat="message in messages">
+                <!-- edit a message -->
+                    <input ng-model="message.text" ng-change="messages.$save(message)" />
+                <!-- delete a message -->
+                    <button ng-click="messages.$remove(message)">Delete Message</button>
+                </li>
+            </ul>
+            <!-- push a new message onto the array -->
             <form class="user-bar" ng-submit = "addMessage()">
-                <input type="text" placeholder="enter a username...">
+                <input placeholder="enter a username..." ng-model="newMessageText"/>
                 <br>
-                <input type="submit"> <!--class="sign-bar" -->
+                <button type="submit">Add Message</button><!--class="sign-bar" -->
             </form>
             <table>
-                <tr ng-repeat ="rooms in chatRooms">
-                    <td>Chat Rooms</td>
-                    <td>{{ $index + 1 }}</td>
-                    <td>Active Rooms</td>
+                <tr ng-repeat="message in messages">
+                    <td>{{ $index + 1 }}.</td>
+                    <td>Name: {{items[$index]}}</td>
                 </tr>
             </table>
             <br>

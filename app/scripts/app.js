@@ -37,17 +37,43 @@ binChat.config(function($locationProvider, $stateProvider) {
 binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", function($scope, $firebaseArray, Room) {
     $scope.welcome = "Welcome, to Bloc Chat";
     $scope.chatRooms = Room.all;
+    $scope.messages = Room.alt;
+    $scope.items = ["Travel Room", "Water Room", "Dogs Room"];
+    // add new items to the array
+    // the message is automatically added to our Firebase database!
+    $scope.addMessage = function() {
+        $scope.messages.$add({
+            name: $scope.newMessageText
+        });
+    };
 }]);
 
-binChat.controller("SubmitController", ["$scope", function ($scope) {
-    
+binChat.controller("SubmitController", ["$scope", "$firebaseArray","Room", function ($scope, $firebaseArray, Room) {
+    $scope.chatRooms = Room.all;
+    $scope.messages = Room.alt;
+    //ADD MESSAGE METHOD
+    $scope.addMessage = function(e) {
+        //LISTEN FOR RETURN KEY
+        if (e.keyCode === 13 && $scope.msg) {
+            //ALLOW CUSTOM OR ANONYMOUS USER NAMES
+            var name = $scope.name || "anonymous";
+            $scope.messages.$add({ from: name, body: $scope.msg });
+            //RESET MESSAGE
+            $scope.msg = "";
+        }
+    }
 }]);
 
 binChat.factory("Room", ['$firebaseArray', function($firebaseArray) {
+    // link to app's firebase array
     var firebaseRef = new Firebase("https://binchat.firebaseio.com/");
+    // download the data into a local object
     var rooms = $firebaseArray(firebaseRef.child("rooms"));
+    // create a synchronized array
+    var fb = $firebaseArray(firebaseRef);
 
     return {
-      all: rooms 
-    }
+      all: rooms,
+      alt: fb
+      }
   }]);
