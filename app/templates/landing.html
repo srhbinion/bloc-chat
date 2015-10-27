@@ -21,8 +21,9 @@
             </form>
             <table>
                 <tr ng-repeat="message in messages">
-                    <td>{{ $index + 1 }}.</td>
-                    <td>Name: {{items[$index]}}</td>
+                    <td>Room {{ $index + 1 }}:</td>
+                    <td>Name: {{items[$index ]}}</td>
+                    <td>Name: {{chatRooms}}</td>
                 </tr>
             </table>
             <br>
