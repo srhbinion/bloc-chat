@@ -36,20 +36,48 @@ binChat.config(function($locationProvider, $stateProvider) {
  */
 binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", function($scope, $firebaseArray, Room) {
     $scope.welcome = "Welcome, to Bloc Chat";
-    $scope.chatRooms = Room.all;
+    //accesses general array
     $scope.messages = Room.alt;
-    $scope.items = ["Travel Room", "Water Room", "Dogs Room"];
-    // add new items to the array
-    // the message is automatically added to our Firebase database!
+    // the message is added to our Firebase database!
     $scope.addMessage = function() {
         $scope.messages.$add({
-            name: $scope.newMessageText
+            name: $scope.messageText,
+            type: "message"
         });
     };
+    //accesses room array
+    $scope.roomNames = Room.all;
+    $scope.addRoom = function(item) {
+        $scope.roomNames.$add({
+            name: $scope.roomName,
+            type: "room"
+        });
+    };
+    //add (push) an object to the Firebase Array
+    $scope.addItemToArray = function(){
+        var myItem = { name: "My object"}
+        //push item to array
+        $scope.myArray.$add(myItem);
+    };
+    //pass an item through this function to save it to the array
+    $scope.saveItemInArray = function(item){
+        $scope.myArray.$save(item);
+    };
+    // remove item from the array
+    $scope.deleteItemFromArray= function(item) {
+        $scope.roomNames.$remove({
+            name: $scope.roomName,
+            type: "room"
+        });
+    };
+    //$scope.deleteItemFromArray = function(item){
+    //    $scope.myArray.$remove(item);
+    //};
+    
 }]);
 
 binChat.controller("SubmitController", ["$scope", "$firebaseArray","Room", function ($scope, $firebaseArray, Room) {
-    $scope.chatRooms = Room.all;
+    //$scope.chatRooms = Room.all;
     $scope.messages = Room.alt;
     //ADD MESSAGE METHOD
     $scope.addMessage = function(e) {
@@ -67,13 +95,14 @@ binChat.controller("SubmitController", ["$scope", "$firebaseArray","Room", funct
 binChat.factory("Room", ['$firebaseArray', function($firebaseArray) {
     // link to app's firebase array
     var firebaseRef = new Firebase("https://binchat.firebaseio.com/");
-    // download the data into a local object
-    var rooms = $firebaseArray(firebaseRef.child("rooms"));
     // create a synchronized array
-    var fb = $firebaseArray(firebaseRef);
+    var fbArray = $firebaseArray(firebaseRef);
+    // create a synchronized array with 
+    var rooms = $firebaseArray(firebaseRef.child("rooms"));
+    
 
     return {
       all: rooms,
-      alt: fb
+      alt: fbArray
       }
   }]);
