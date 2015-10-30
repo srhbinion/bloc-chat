@@ -49,7 +49,7 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", func
     $scope.roomNames = Room.all;
     $scope.addRoom = function(item) {
         $scope.roomNames.$add({
-            name: $scope.roomName,
+            name: $scope.roomNames,
             type: "room"
         });
     };
@@ -65,10 +65,7 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", func
     };
     // remove item from the array
     $scope.deleteItemFromArray= function(item) {
-        $scope.roomNames.$remove({
-            name: $scope.roomName,
-            type: "room"
-        });
+        $scope.roomNames.$remove(item)
     };
     //$scope.deleteItemFromArray = function(item){
     //    $scope.myArray.$remove(item);
