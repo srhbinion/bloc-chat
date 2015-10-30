@@ -1,7 +1,7 @@
 <section>
     <nav class="navbar"> 
         <h7 ui-sref="submit" class="links-container">User Name <br><span>...waiting</span></h7>
-        <form class="nav-list-first" ng-submit = "addRoom()">
+        <form class="nav-list-first" ng-submit = "addRoom(names)">
             <input placeholder="Create Room..." ng-model="roomNames"/>
             <button class="sign-bar" type="submit">Go!</button><!--class="sign-bar" -->
         </form>
@@ -9,7 +9,7 @@
             <tr class="nav-list">
                 <td><h4>Room {{ $index + 1 }}:<br> Name {{name}}</h4></td>
                 <!-- DELETE a message -->
-                <td class="btn" ng-click="deleteItemFromArray()"><h4>x</h4></td> 
+                <td class="btn" ng-click="addRoom.$remove(names)"><h4>x</h4></td> 
                 <!-- edit a message -->
                 <!--<td class="btn" ng-model="message.text" ng-change="messages.$save(message)">change</td>-->
             </tr>
