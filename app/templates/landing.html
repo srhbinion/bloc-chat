@@ -1,17 +1,16 @@
 <section>
     <nav class="navbar"> 
         <h7 ui-sref="submit" class="links-container">User Name <br><span>...waiting</span></h7>
-        <form class="nav-list-first" ng-submit = "addRoom(names)">
-            <input placeholder="Create Room..." ng-model="roomNames"/>
+        <form class="nav-list-first" ng-submit = "addMessage()">
+            <input placeholder="Create Room..." ng-model="newMessageText"/>
             <button class="sign-bar" type="submit">Go!</button><!--class="sign-bar" -->
         </form>
-        <table ng-repeat="rooms in roomNames">
+        <table ng-repeat="room in chatRooms"><!-- rooms in roomNames-->
             <tr class="nav-list">
-                <td><h4>Room {{ $index + 1 }}:<br> Name {{name}}</h4></td>
+                <td><h4>Room {{ $index + 1 }}:<br>{{room.name}}</h4></td>
                 <!-- DELETE a message -->
-                <td class="btn" ng-click="addRoom.$remove(names)"><h4>x</h4></td> 
-                <!-- edit a message -->
-                <!--<td class="btn" ng-model="message.text" ng-change="messages.$save(message)">change</td>-->
+                <td class="btn" ng-click="chatRooms.$remove(room)"><h4>x</h4></td> 
+                <!-- -->
             </tr>
         </table>
     </nav>
@@ -21,18 +20,6 @@
         <h1>{{welcome}}</h1>
     </div>
     
-    <!--<div class="hero-content" ng-controller="LandingController">
-        <div class="hero-title">
-            <img src="../assets/images/bChat3.png" alt="bloc chat logo">
-            <h1 >{{welcome}}</h1>
-            <br>
-            <form class="user-bar">
-                <input placeholder="enter a username..."/>
-                <br>
-                <button type="submit">Add User Name</button>
-            </form>
-            <br>
-        </div>
-    </div> -->
+    <!-- -->
 </section>
  

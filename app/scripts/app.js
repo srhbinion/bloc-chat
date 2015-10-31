@@ -36,41 +36,21 @@ binChat.config(function($locationProvider, $stateProvider) {
  */
 binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", function($scope, $firebaseArray, Room) {
     $scope.welcome = "Welcome, to Bloc Chat";
+    //accesses room array
+    $scope.chatRooms = Room.all;
     //accesses general array
     $scope.messages = Room.alt;
     // the message is added to our Firebase database!
-    $scope.addMessage = function() {
-        $scope.messages.$add({
-            name: $scope.messageText,
-            type: "message"
+    $scope.addMessage = function(room) {
+        $scope.chatRooms.$add({
+            name: $scope.newMessageText,
+            type: "Room"
         });
-    };
-    //accesses room array
-    $scope.roomNames = Room.all;
-    $scope.addRoom = function(item) {
-        $scope.roomNames.$add({
-            name: $scope.roomNames,
-            type: "room"
-        });
-    };
-    //add (push) an object to the Firebase Array
-    $scope.addItemToArray = function(){
-        var myItem = { name: "My object"}
-        //push item to array
-        $scope.myArray.$add(myItem);
-    };
-    //pass an item through this function to save it to the array
-    $scope.saveItemInArray = function(item){
-        $scope.myArray.$save(item);
     };
     // remove item from the array
-    $scope.deleteItemFromArray= function(item) {
-        $scope.roomNames.$remove(item)
-    };
-    //$scope.deleteItemFromArray = function(item){
-    //    $scope.myArray.$remove(item);
+    //$scope.deleteItemFromArray= function(item) {
+    //    $scope.roomNames.$remove(item)
     //};
-    
 }]);
 
 binChat.controller("SubmitController", ["$scope", "$firebaseArray","Room", function ($scope, $firebaseArray, Room) {
@@ -97,7 +77,6 @@ binChat.factory("Room", ['$firebaseArray', function($firebaseArray) {
     // create a synchronized array with 
     var rooms = $firebaseArray(firebaseRef.child("rooms"));
     
-
     return {
       all: rooms,
       alt: fbArray
