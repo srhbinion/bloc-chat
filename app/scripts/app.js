@@ -21,11 +21,11 @@ binChat.config(function($locationProvider, $stateProvider) {
 			controller:"LandingController",
 			templateUrl:"/templates/landing.html"
 		})
-        .state("submit",{
+        .state("chat",{
 			// properties of the state listed in "controller"
-			url: "/submit.html",
-			controller:"SubmitController",
-			templateUrl:"/templates/submit.html"
+			url: "/chat.html",
+			controller:"ChatController",
+			templateUrl:"/templates/chat.html"
 		});
 });
 
