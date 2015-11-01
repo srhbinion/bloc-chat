@@ -1,4 +1,25 @@
-<section class="body two-thirds">
-    <h2>{{welcome}}</h2>
-    <h3> Section 1</h3>
+<section>
+    <nav class="navbar"> 
+        <h7 ui-sref="submit" class="links-container">User Name <br><span>...waiting</span></h7>
+        <form class="nav-list-first" ng-submit = "addMessage()">
+            <input placeholder="Create Room..." ng-model="newMessageText"/>
+            <button class="sign-bar" type="submit">Go!</button><!--class="sign-bar" -->
+        </form>
+        <table ng-repeat="room in chatRooms"><!-- rooms in roomNames-->
+            <tr class="nav-list">
+                <td><h4>Room {{ $index + 1 }}:<br>{{room.name}}</h4></td>
+                <!-- DELETE a message -->
+                <td class="btn" ng-click="removeMessage($index)"><h4 type="click">x</h4></td> 
+                <!--chatRooms.$remove(room) -->
+            </tr>
+        </table>
+    </nav>
 </section>
+<section class="body-pannel">
+    <div class="hero-content">
+        <h1>{{welcome}}</h1>
+    </div>
+    
+    <!-- -->
+</section>
+ 

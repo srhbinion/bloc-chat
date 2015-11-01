@@ -6,27 +6,319 @@
 
 html { 
     height: 100%; /*100 browser window*/
-    background-color: lightgoldenrodyellow;
-    font-family: "courier";
+    background-color: #ffffff;
+    font-family: "Roboto","Helvetica","sans-serif";
+    color: #555459;
+    font-size: 1rem;
 }
 
-.body {
-    position: relative;
-    float: right;
-    color: orangered;
-    width: 75%; 
+h1 {
+    color: #187e82;
+    font-size: 5rem;
+    font-weight: 300;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.5rem;
+    line-height: 10rem;
+}
+
+h2{
+    font-size: .75rem;
+    font-style: bold;
+    text-align: right;
+    
+}
+
+h3{
+    font-size: .75rem;
+    font-style: bold;
+    text-align: left;
+    
+}
+
+h4 {
+    color: #d5d5d5;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: .7rem  ;
+}
+
+p {
+    font-size: .75rem;
+}
+
+li {
+    color: #fbfaf8;
+    text-align: center;
+    font-size:  1rem;
+    
+}
+
+span{
+    text-align: center;
+    color: #fbfaf8;
+    font-style: italic;
+    font-size: .75rem;
+}
+
+.title-bar {
+    position:absolute;
+    top: 0px;
+    right: 0px;
+    width: 75%;
+    height: 75px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #f1f1f1;
+}
+
+.title-bar .logo {
+    float: left;
+    padding: 10px;
+}
+
+.title-bar .links-container{
+    display: table;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background-color: #d5d5d5;
+    color: white;
+    padding: inherit;
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    /*removes text decorations like underlines */
+    text-decoration: none;
+    font-size: 14px;
+
+}
+
+.title-bar .links-container:hover {
+    background: #660066;
+    text-decoration: none;
 }
 
 .navbar {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    padding: 
-    margin: 3rem;
-    /* rgba = supports transparency*/
-    background-color: orangered;
-    color: aliceblue;
-    height: 100%;    
+    float: left;
+    top:0px;
+    left:0px;
+    height: 100%;
+    width:25%;
+    padding-left: 10px;
+    padding-right: 50px;
+    background-image: url(../assets/images/skulls2.png);
+
+}
+
+.navbar .links-container {
+    display: table;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 75px;
+    background-color: #187e82;
+    color: white;
+    padding-left: 25%;
+    padding-top: 7%;
+    width: 100%;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.navbar .nav-list-first {
+    margin: 7%;
+    margin-top: 100px;
+    padding: 5%;
+    display: table;
+    background-color: #ffc211;
+    width: 250px;
+    -webkit-border-radius: 8;
+    -moz-border-radius: 3;
+    border-radius: 3px;
+    border: solid whitesmoke 2px;
+    opacity: 0.7;
+    filter: alpha(opacity=70); /* For IE8 and earlier */
+}
+
+.navbar .nav-list {
+    display: table;
+    margin: 7%;
+    margin-left: 20px;
+    padding: 15px;
+    background-color: #e33200;
+    width: 250px;
+    -webkit-border-radius: 8;
+    -moz-border-radius: 3;
+    border-radius: 3px;
+    border: solid whitesmoke 2px;
+    opacity: 0.7;
+    filter: alpha(opacity=70); /* For IE8 and earlier */
+}
+
+.navbar .links-container:hover {
+    background: #660066;
+    text-decoration: none;
+}
+
+.body-pannel {
+    position: fixed;
+    top:75px;
+    right: 0px;
+    bottom: 0px;
+    width: 75%;
+    background-color: #d5d5d5;
+    background-image: url(../assets/images/homeboaboaKevMunday.png);
+}
+
+.hero-content {
+    position: relative;
+    min-height: 35rem;
+    margin-top: 15%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 35%;
+    background-position: center center;
+    background-size: cover; 
+    background-color: gainsboro;
+    text-align: center;
+    font-size: 90px;
+    font-family: "impact";
+    -webkit-border-radius: 8;
+    -moz-border-radius: 3;
+    border-radius: 4px;
+    border: solid whitesmoke 2px;
+    opacity: 0.7;
+    filter: alpha(opacity=70); /* For IE8 and earlier */
+} 
+ 
+.hero-content .hero-title {
+     position: absolute;
+     top: 40%;
+     -webkit-transform: translateY(-50%);
+     -moz-transform: translateY(-50%);
+     transform: translateY(-50%);
+     width: 100%;
+     text-align: center;
+}
+
+.user-bar{
+    -webkit-border-radius: 8;
+    -moz-border-radius: 3;
+    border-radius: 3px;
+    background-color: white;
+    border: solid #d5d5d5 1px;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.sign-bar{
+    -webkit-border-radius: 8;
+    -moz-border-radius: 3;
+    border-radius: 8px;
+    color: #ffffff;
+    background: #e33200;
+    margin-top: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 85%;
+    border: solid #d5d5d5 1px;
+    opacity: 0.7;
+    filter: alpha(opacity=70); /* For IE8 and earlier */
+}
+
+.sign-bar:hover {
+    background: #660066;
+    text-decoration: none;
+}
+
+.roomName{
+    background-color: blue;
+}
+
+.chat-pannel {
+    position: fixed;
+    top:75px;
+    right: 0px;
+    bottom: 150px;
+    width: 75%;
+    overflow: scroll;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.footer-bar{
+    position:absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 100%;
+    height: 150px;
+    padding-left: 1%;
+    padding-right: 1%;
+    background-color: #f1f1f1;
+}
+
+.search-bar{
+    -webkit-border-radius: 8;
+    -moz-border-radius: 3;
+    border-radius: 3px;
+    border: solid #d5d5d5 1px;
+    background-color: white;
+    height: 75%;
+    margin-top: 1%;
+    margin-right: 12%;
+    margin-bottom: 2%;
+    margin-left: 1%;
+    padding: 2px;
+    overflow: scroll;
+}
+
+.footer-bar .links-container {
+    display: table;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height:75%;
+    -webkit-border-radius: 8;
+    -moz-border-radius: 3;
+    border-radius: 3px;
+    background-color: #d5d5d5;
+    color: white;
+    padding-top: 4%;
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-top: 1%;
+    margin-right: 2%;
+    margin-left: 2%;
+    /*removes text decorations like underlines */
+    text-decoration: none;
+}
+
+.footer-bar .links-container:hover {
+    background: #660066;
+    text-decoration: none;
+}
+
+.btn {
+    -webkit-border-radius: 8;
+    -moz-border-radius: 3;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 14px;
+    width: 30%;
+    background: #8c264d;
+    padding: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border: solid #fdd497 1px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #660066;
+    text-decoration: none;
 }
 
 /* Medium and small screens (640px) */
