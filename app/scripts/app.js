@@ -40,17 +40,18 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", func
     $scope.chatRooms = Room.all;
     //accesses general array
     $scope.messages = Room.alt;
-    // the message is added to our Firebase database!
+    // the room is added to the room array
     $scope.addMessage = function(room) {
         $scope.chatRooms.$add({
             name: $scope.newMessageText,
             type: "Room"
         });
+        $scope.newMessageText =[];
     };
     // remove item from the array
-    //$scope.deleteItemFromArray= function(item) {
-    //    $scope.roomNames.$remove(item)
-    //};
+    $scope.removeMessage = function(room) {
+        $scope.chatRooms.$remove(room);
+    };
 }]);
 
 binChat.controller("SubmitController", ["$scope", "$firebaseArray","Room", function ($scope, $firebaseArray, Room) {

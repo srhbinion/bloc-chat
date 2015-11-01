@@ -9,8 +9,8 @@
             <tr class="nav-list">
                 <td><h4>Room {{ $index + 1 }}:<br>{{room.name}}</h4></td>
                 <!-- DELETE a message -->
-                <td class="btn" ng-click="chatRooms.$remove(room)"><h4>x</h4></td> 
-                <!-- -->
+                <td class="btn" ng-click="removeMessage($index)"><h4 type="click">x</h4></td> 
+                <!--chatRooms.$remove(room) -->
             </tr>
         </table>
     </nav>
