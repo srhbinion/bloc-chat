@@ -1,3 +1,8 @@
+/**
+ * Establishes Angular framework and other plugins
+ * @param  {function} UI router   - framework to enhance routing and states
+ * @param  {function} firebase  - data storage site. https://binchat.firebaseio.com/
+ */
 var binChat = angular.module("binChat", ["ui.router","firebase"]);
 
 /**
@@ -30,17 +35,17 @@ binChat.config(function($locationProvider, $stateProvider) {
 });
 
 /**
- * Controls the landing view
- * @return {}  - 
- * @return {}  - 
+ * Controls the landing view and the creation and subtraction of chat rooms.
+ * @return {array}  - adds and removes chat rooms in the firebase array for rooms
  */
 binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", function($scope, $firebaseArray, Room) {
+    //welcome text in body panel
     $scope.welcome = "Welcome, to Bloc Chat";
     //accesses room array
     $scope.chatRooms = Room.all;
-    //accesses general array
+    //accesses general array - TODO: Delete; Not used in this controller.
     $scope.messages = Room.alt;
-    // the room is added to the room array
+    // adds item to the room array
     $scope.addMessage = function(room) {
         $scope.chatRooms.$add({
             name: $scope.newMessageText,
@@ -48,38 +53,58 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", func
         });
         $scope.newMessageText =[];
     };
-    // remove item from the array
+    // removes item from the array
     $scope.removeMessage = function(room) {
         $scope.chatRooms.$remove(room);
     };
+    $scope.setCurrentRoom = function(room){
+        console.log(room);
+        return room;
+    };
 }]);
 
-binChat.controller("SubmitController", ["$scope", "$firebaseArray","Room", function ($scope, $firebaseArray, Room) {
-    //$scope.chatRooms = Room.all;
+binChat.controller("ChatController", ["$scope", "$firebaseArray","Room", function ($scope, $firebaseArray, Room) {
+    //accesses room array
+    $scope.chatRooms = Room.all;
+    //accesses general array
     $scope.messages = Room.alt;
+    $scope.party = "Party";
+    //trying to get current room from line 62
+    $scope.getCurrentRoom = function(name){
+        if (name == true){
+            console.log("yes")
+        } else {
+            console.log("try again")
+        };
+    };
     //ADD MESSAGE METHOD
-    $scope.addMessage = function(e) {
-        //LISTEN FOR RETURN KEY
-        if (e.keyCode === 13 && $scope.msg) {
-            //ALLOW CUSTOM OR ANONYMOUS USER NAMES
-            var name = $scope.name || "anonymous";
-            $scope.messages.$add({ from: name, body: $scope.msg });
-            //RESET MESSAGE
-            $scope.msg = "";
-        }
-    }
+    //$scope.addMessage = function(e) {
+    //    //LISTEN FOR RETURN KEY
+    //    if (e.keyCode === 13 && $scope.msg) {
+    //        //ALLOW CUSTOM OR ANONYMOUS USER NAMES
+    //        var name = $scope.name || "anonymous";
+    //        $scope.messages.$add({ from: name, body: $scope.msg });
+    //        //RESET MESSAGE
+    //        $scope.msg = "";
+    //     }
+    //}
 }]);
-
+/**
+ * Ability to access the firebase database from anywhere on site
+ * @param  {database} firebase  - data storage site. https://binchat.firebaseio.com/
+ */
 binChat.factory("Room", ['$firebaseArray', function($firebaseArray) {
-    // link to app's firebase array
+    // link to app's firebase database
     var firebaseRef = new Firebase("https://binchat.firebaseio.com/");
-    // create a synchronized array
+    // create a synchronized general array
     var fbArray = $firebaseArray(firebaseRef);
-    // create a synchronized array with 
+    // create a synchronized room array
     var rooms = $firebaseArray(firebaseRef.child("rooms"));
     
     return {
-      all: rooms,
-      alt: fbArray
-      }
+        //accesses general array
+        alt: fbArray,
+        //accesses room array
+        all: rooms
+        }
   }]);

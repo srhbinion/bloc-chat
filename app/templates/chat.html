@@ -1,7 +1,11 @@
 <!--chat pannel -->
-<section class="chat-pannel" ng-controller="ChatController">
-    <p> welcome friends. Let's chat about the far places in the internet that will make you laugh. Send me messages and funny positive jokes.
-    </p>
+<section>
+    <div class="hero-content">
+        <h1>{{party}}!</h1>
+        <p>Welcome friends. Let's chat about the far places in the internet that will make you laugh. Send me messages and funny positive jokes.
+        </p>
+        <h2>Room: {{$index + 1}}{{name}}</h2>
+    </div>
     <div class="example-chat-toolbar">
         <label for="nameInput">Username:</label>
         <input ng-model="name" type="text" id="nameInput" placeholder="enter a username...">
