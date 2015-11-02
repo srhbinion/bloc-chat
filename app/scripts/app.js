@@ -69,7 +69,8 @@ binChat.controller("ChatController", ["$scope", "$firebaseArray","Room", functio
     $scope.party = "Party";
     //click on chat room to set
     //$scope.currentRoomArray = Room.roomArray;
-    $scope.activeRoom = Room.showRoom;
+    $scope.activeRoom = Room.getCurrentRoom();
+    //if current room
 }]);
 /**
  * Ability to access the firebase database from anywhere on site
@@ -83,7 +84,7 @@ binChat.factory("Room", ['$firebaseArray', function($firebaseArray) {
     // create a synchronized room array
     var rooms = $firebaseArray(firebaseRef.child("rooms"));
     // active room
-    var activeRoom = [];
+    this.activeRoom = null;
  
     return {
         //accesses general array
@@ -92,11 +93,13 @@ binChat.factory("Room", ['$firebaseArray', function($firebaseArray) {
         all: rooms,
         //click on chat room to set
         setRoom: function(room){
+            //prints out correct array from the sleceted chat room in the landing.html view
+            //TODO: get chat.html view to display this chatroom's information
             console.log(room);
-            return activeRoom.push(room);
+            return this.activeRoom;
         },
-        showRoom: function(){
-            console.log(activeRoom);
+        getCurrentRoom: function(room){
+            console.log(this.activeRoom);
         }
     }
 }]);
