@@ -1,10 +1,10 @@
 <!--chat pannel -->
 <section>
-    <div class="hero-content">
+    <div class="hero-content" ng-repeat="room in chatRooms">
         <h1>{{party}}!</h1>
         <p>Welcome friends. Let's chat about the far places in the internet that will make you laugh. Send me messages and funny positive jokes.
         </p>
-        <h2>Room: {{$index + 1}}{{name}}</h2>
+        <h2>Room: {{$index}}{{setCurrentRoom.name}}</h2>
     </div>
     <div class="example-chat-toolbar">
         <label for="nameInput">Username:</label>

@@ -57,10 +57,7 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", func
     $scope.removeMessage = function(room) {
         $scope.chatRooms.$remove(room);
     };
-    $scope.setCurrentRoom = function(room){
-        console.log(room);
-        return room;
-    };
+    $scope.setCurrentRoom = Room.setRoom;
 }]);
 
 binChat.controller("ChatController", ["$scope", "$firebaseArray","Room", function ($scope, $firebaseArray, Room) {
@@ -70,13 +67,6 @@ binChat.controller("ChatController", ["$scope", "$firebaseArray","Room", functio
     $scope.messages = Room.alt;
     $scope.party = "Party";
     //trying to get current room from line 62
-    $scope.getCurrentRoom = function(name){
-        if (name == true){
-            console.log("yes")
-        } else {
-            console.log("try again")
-        };
-    };
     //ADD MESSAGE METHOD
     //$scope.addMessage = function(e) {
     //    //LISTEN FOR RETURN KEY
@@ -101,10 +91,16 @@ binChat.factory("Room", ['$firebaseArray', function($firebaseArray) {
     // create a synchronized room array
     var rooms = $firebaseArray(firebaseRef.child("rooms"));
     
+    var setCurrentRoom = function(room){
+        console.log(room);
+        return room;
+    };
     return {
         //accesses general array
         alt: fbArray,
         //accesses room array
-        all: rooms
+        all: rooms,
+        //click on chat room to set
+        setRoom: setCurrentRoom
         }
   }]);

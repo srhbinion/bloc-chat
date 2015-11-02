@@ -169,8 +169,8 @@ span{
     right: 0px;
     bottom: 0px;
     width: 75%;
-    background-color: #d5d5d5;
-    background-image: url(../assets/images/homeboaboaKevMunday.png);
+    background-color: gainsboro;
+    /*background-image: url(../assets/images/homeboaboaKevMunday.png);*/
 }
 
 .hero-content {
