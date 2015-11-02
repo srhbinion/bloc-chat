@@ -41,28 +41,23 @@ binChat.config(function($locationProvider, $stateProvider) {
 binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", function($scope, $firebaseArray, Room) {
     //welcome text in body panel
     $scope.welcome = "Welcome, to Bloc Chat";
-    //accesses room array
+    //accesses "room" array
     $scope.chatRooms = Room.allRooms;
-    //accesses general array - TODO: Delete; Not used in this controller.
-    $scope.messages = Room.allArray;
-    // adds item to the room array
+    // adds item to the "room" array
     $scope.addChatRoom = Room.addChatRoom;
-    // removes item from the array
+    // removes item from "room" array
     $scope.removeChatRoom = Room.removeChatRoom;
-    
-    //prints out room clicked on
+    //prints out "room" clicked on
     $scope.selectCurrentRoom = Room.setRoom;
 }]);
 
 binChat.controller("ChatController", ["$scope", "$firebaseArray","Room", function ($scope, $firebaseArray, Room) {
-    //accesses room array
+    //accesses "room" array
     $scope.chatRooms = Room.allRooms;
-    //testing
+    //test to ensure expressions are linked to controller
     $scope.party = "Party";
-    //click on chat room to set
-    //$scope.currentRoomArray = Room.roomArray;
-    //$scope.activeRoom = Room.getCurrentRoom();
-    //if current room
+    //display selected "room" arry in chat.html view
+    $scope.currentRoom = Room.setRoom();
 }]);
 /**
  * Ability to access the firebase database from anywhere on site
@@ -79,27 +74,28 @@ binChat.factory("Room", ['$firebaseArray', function($firebaseArray) {
     this.activeRoom = null;
  
     return {
-        //accesses general array 
+        //accesses firebase array 
         allArray: fbArray,
-        //accesses 'room' array
+        //accesses "room" array
         allRooms: rooms,
-        // adds item to the room array
+        // adds item to the "room" array
         addChatRoom: function(room){
             this.chatRooms.$add({
-                name: $scope.newMessageText,
+                name: this.newMessageText,
                 type: "Room"
             });
             this.newMessageText =[];   
         },
-        // removes item to the room array
+        // removes item to the "room" array
         removeChatRoom: function(room){
             this.chatRooms.$remove(room); 
         },
+        // returns "room" in "chatRooms"
         setRoom: function(room){
             console.log(room);
-            return this.activeRoom = [room];
+            return room;
         }
-    }
+    };
 }]);
 
     //trying to get current room from line 62
