@@ -42,21 +42,13 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", func
     //welcome text in body panel
     $scope.welcome = "Welcome, to Bloc Chat";
     //accesses room array
-    $scope.chatRooms = Room.all;
+    $scope.chatRooms = Room.allRooms;
     //accesses general array - TODO: Delete; Not used in this controller.
-    $scope.messages = Room.alt;
+    $scope.messages = Room.allArray;
     // adds item to the room array
-    $scope.addMessage = function(room) {
-        $scope.chatRooms.$add({
-            name: $scope.newMessageText,
-            type: "Room"
-        });
-        $scope.newMessageText =[];
-    };
+    $scope.addChatRoom = Room.addChatRoom;
     // removes item from the array
-    $scope.removeMessage = function(room) {
-        $scope.chatRooms.$remove(room);
-    };
+    $scope.removeChatRoom = Room.removeChatRoom;
     
     //prints out room clicked on
     $scope.selectCurrentRoom = Room.setRoom;
@@ -64,12 +56,12 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", func
 
 binChat.controller("ChatController", ["$scope", "$firebaseArray","Room", function ($scope, $firebaseArray, Room) {
     //accesses room array
-    $scope.chatRooms = Room.all;
+    $scope.chatRooms = Room.allRooms;
     //testing
     $scope.party = "Party";
     //click on chat room to set
     //$scope.currentRoomArray = Room.roomArray;
-    $scope.activeRoom = Room.getCurrentRoom();
+    //$scope.activeRoom = Room.getCurrentRoom();
     //if current room
 }]);
 /**
@@ -83,23 +75,29 @@ binChat.factory("Room", ['$firebaseArray', function($firebaseArray) {
     var fbArray = $firebaseArray(firebaseRef);
     // create a synchronized room array
     var rooms = $firebaseArray(firebaseRef.child("rooms"));
-    // active room
+    
     this.activeRoom = null;
  
     return {
-        //accesses general array
-        alt: fbArray,
-        //accesses room array
-        all: rooms,
-        //click on chat room to set
-        setRoom: function(room){
-            //prints out correct array from the sleceted chat room in the landing.html view
-            //TODO: get chat.html view to display this chatroom's information
-            console.log(room);
-            return this.activeRoom;
+        //accesses general array 
+        allArray: fbArray,
+        //accesses 'room' array
+        allRooms: rooms,
+        // adds item to the room array
+        addChatRoom: function(room){
+            this.chatRooms.$add({
+                name: $scope.newMessageText,
+                type: "Room"
+            });
+            this.newMessageText =[];   
         },
-        getCurrentRoom: function(room){
-            console.log(this.activeRoom);
+        // removes item to the room array
+        removeChatRoom: function(room){
+            this.chatRooms.$remove(room); 
+        },
+        setRoom: function(room){
+            console.log(room);
+            return this.activeRoom = [room];
         }
     }
 }]);

@@ -1,7 +1,7 @@
 <section>
     <nav class="navbar"> 
         <h7 ui-sref="chat" class="links-container">User Name <br><span>...waiting</span></h7>
-        <form class="nav-list-first" ng-submit = "addMessage()">
+        <form class="nav-list-first" ng-submit = "addChatRoom()">
             <input placeholder="Create Room..." ng-model="newMessageText"/>
             <button class="sign-bar" type="submit">Go!</button><!--class="sign-bar" -->
         </form>
@@ -10,7 +10,7 @@
                 <!--Room Name -->
                 <td><h4>Room {{ $index + 1 }}:<br>{{room.name}}</h4></td>
                 <!-- DELETE a message -->
-                <td class="btn" ng-click="removeMessage($index)"><h4 type="click">x</h4></td> 
+                <td class="btn" ng-click="removeChatRoom($index)"><h4 type="click">x</h4></td> 
             </tr>
         </table>
     </nav>
