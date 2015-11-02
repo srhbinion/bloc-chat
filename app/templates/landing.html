@@ -5,7 +5,7 @@
             <input placeholder="Create Room..." ng-model="newMessageText"/>
             <button class="sign-bar" type="submit">Go!</button><!--class="sign-bar" -->
         </form>
-        <table ng-repeat="room in chatRooms" ng-click="setCurrentRoom(room)">
+        <table ng-repeat="room in chatRooms" ng-click="selectCurrentRoom(room)">
             <tr class="nav-list" ui-sref="chat">
                 <!--Room Name -->
                 <td><h4>Room {{ $index + 1 }}:<br>{{room.name}}</h4></td>

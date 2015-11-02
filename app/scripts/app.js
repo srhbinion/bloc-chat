@@ -57,27 +57,19 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", func
     $scope.removeMessage = function(room) {
         $scope.chatRooms.$remove(room);
     };
-    $scope.setCurrentRoom = Room.setRoom;
+    
+    //prints out room clicked on
+    $scope.selectCurrentRoom = Room.setRoom;
 }]);
 
 binChat.controller("ChatController", ["$scope", "$firebaseArray","Room", function ($scope, $firebaseArray, Room) {
     //accesses room array
     $scope.chatRooms = Room.all;
-    //accesses general array
-    $scope.messages = Room.alt;
+    //testing
     $scope.party = "Party";
-    //trying to get current room from line 62
-    //ADD MESSAGE METHOD
-    //$scope.addMessage = function(e) {
-    //    //LISTEN FOR RETURN KEY
-    //    if (e.keyCode === 13 && $scope.msg) {
-    //        //ALLOW CUSTOM OR ANONYMOUS USER NAMES
-    //        var name = $scope.name || "anonymous";
-    //        $scope.messages.$add({ from: name, body: $scope.msg });
-    //        //RESET MESSAGE
-    //        $scope.msg = "";
-    //     }
-    //}
+    //click on chat room to set
+    //$scope.currentRoomArray = Room.roomArray;
+    $scope.activeRoom = Room.showRoom;
 }]);
 /**
  * Ability to access the firebase database from anywhere on site
@@ -90,17 +82,34 @@ binChat.factory("Room", ['$firebaseArray', function($firebaseArray) {
     var fbArray = $firebaseArray(firebaseRef);
     // create a synchronized room array
     var rooms = $firebaseArray(firebaseRef.child("rooms"));
-    
-    var setCurrentRoom = function(room){
-        console.log(room);
-        return room;
-    };
+    // active room
+    var activeRoom = [];
+ 
     return {
         //accesses general array
         alt: fbArray,
         //accesses room array
         all: rooms,
         //click on chat room to set
-        setRoom: setCurrentRoom
+        setRoom: function(room){
+            console.log(room);
+            return activeRoom.push(room);
+        },
+        showRoom: function(){
+            console.log(activeRoom);
         }
-  }]);
+    }
+}]);
+
+    //trying to get current room from line 62
+    //ADD MESSAGE METHOD
+    //$scope.addMessage = function(e) {
+    //    //LISTEN FOR RETURN KEY
+    //    if (e.keyCode === 13 && $scope.msg) {
+    //        //ALLOW CUSTOM OR ANONYMOUS USER NAMES
+    //        var name = $scope.name || "anonymous";
+    //        $scope.messages.$add({ from: name, body: $scope.msg });
+    //        //RESET MESSAGE
+    //        $scope.msg = "";
+    //     }
+    //}
