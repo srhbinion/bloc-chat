@@ -1,25 +1,48 @@
-<section>
-    <nav class="navbar"> 
-        <h7 ui-sref="chat" class="links-container">User Name <br><span>...waiting</span></h7>
-        <form class="nav-list-first" ng-submit = "addChatRoom(room)">
-            <input placeholder="Create Room..." ng-model="newMessageText"/>
-            <button class="sign-bar" type="submit">Go!</button><!--class="sign-bar" -->
-        </form>
-        <table ng-repeat="room in chatRooms" ng-click="selectCurrentRoom(room)">
-            <tr class="nav-list" ui-sref="chat">
-                <!--Room Name -->
-                <td><h4>Room {{ $index + 1 }}:<br>{{room.name}}</h4></td>
-                <!-- DELETE a message -->
-                <td class="btn" ng-click="removeChatRoom(room)"><h4 type="click">x</h4></td> 
-            </tr>
-        </table>
-    </nav>
-</section>
-<section class="body-pannel">
-    <div class="hero-content">
-        <h1>{{welcome}}</h1>
+<!--Logo Box--> 
+<div class="logo-box">
+    <a ui-sref="landing" class="logo">
+        <img src="/assets/images/bChat3.png" alt="bloc chat logo">
+    </a>
+</div>
+<!--Title Bar-->
+<div class="title-bar">
+    <h1 ng-hide="currentRoom">{{welcome}}</h1>
+    <h1 ng-show="currentRoom">{{currentRoomName}}</h1>
+</div>
+<!--Room Bar/Nav-->
+<nav class="navbar">
+    <!--Chat Rooms Panel-->
+    <form class="nav-list-first" ng-submit="addChatRoom(room)">
+        <!--Create Rooms-->
+        <input placeholder="Create Room..." ng-model="newMessageText"/>
+        <button class="sign-bar" type="submit">Go!</button>
+    </form>
+    <!--List of Rooms-->
+    <table ng-repeat="room in chatRooms">
+        <tr class="nav-list" ng-click="setCurrentRoom(room)">
+            <!--Room Name -->
+            <td>Room {{ $index + 1 }}: {{room.name}}</td>
+            <!-- DELETE a Room -->
+            <td class="btn" ng-click="removeChatRoom(room)" type="click">x</td> 
+        </tr>
+    </table>
+</nav>
+<div class="body-pannel">
+    <div ng-hide="currentRoom">
+        <h1>{{request}}</h1>
     </div>
-    
-    <!-- -->
-</section>
+    <div ng-show="currentRoom">
+        <!--Message-->
+        <h3>Current Chat Session</h3>
+        <p>User One: {{msg}}</p>
+    </div>
+</div>
+<!--Message Bar/Footer-->
+<div class="footer-bar" ng-show="currentRoom">
+    <div class="search-bar">
+        <input placeholder="Type a message..." ng-model="msg" type="text" ng-submit="addChatRoomMessage(msg)">
+    </div>
+    <button class="links-container" type="submit">Submit</button>
+</div>
+
  

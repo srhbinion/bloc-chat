@@ -1,28 +1,12 @@
 <!--chat pannel -->
+<nav class="navbar" ng-repeat = "room in chatRooms"> 
+    <h2>Room: {{room.name}}</h2>
+</nav>
 <section>
     <div class="hero-content">
         <p>{{party}}!</p>
-        <h2>Room: {{selectCurrentRoom}}</h2>
-        <br>
-        <h2>Room2: {{currnetRoom}}</h2>
-        <br>
-        <h2>Room3: {{room}}</h2>
+        <h2>Room: {{room.name}}</h2>
     </div>
-    <div class="example-chat-toolbar">
-        <label for="nameInput">Username:</label>
-        <input ng-model="name" type="text" id="nameInput" placeholder="enter a username...">
-    </div>
-    <ul class="example-chat-messages">
-        <li ng-repeat="msg in messages">
-            <strong class="example-chat-username">{{ msg.from }}</strong>{{ msg.body }}
-        </li>
-    </ul>
 </section>
-<div class="footer-bar">
-    <div class="search-bar">
-        <input ng-model="msg" type="text" id="messageInput"  placeholder="Type a message...">
-    </div>
-    <a class="links-container" ng-keydown="addMessage($event)">Submit</a>
-</div>
 
  
