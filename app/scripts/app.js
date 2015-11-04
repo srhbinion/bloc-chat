@@ -25,7 +25,7 @@ binChat.config(function($locationProvider, $stateProvider) {
 			url: "/index.html",
 			controller:"LandingController",
 			templateUrl:"/templates/landing.html"
-		})
+		});
         .state("chat",{
 			// properties of the state listed in "controller"
 			url: "/chat.html",
@@ -45,28 +45,27 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", func
     $scope.request = "Do you want to chat today?";
     //accesses "room" array
     $scope.chatRooms = Room.allRooms;
-    //accesses "room" array
-    $scope.messageRooms = Room.allArray;
+    //accesses "message" array
+    $scope.chatMessages = Room.allMessages;
     // adds item to the "room" array
     $scope.addChatRoom = Room.addChatRoom;
+    // adds item to the "Messages" array
+    $scope.addMessages = Room.addMessages;
     // removes item from "room" array
     $scope.removeChatRoom = Room.removeChatRoom;
     //Room is set at false to hide message bar
     $scope.currentRoom = false;
-    //un-hide rooms
+    //shows the selected room to current room
     $scope.setCurrentRoom = function(room){
+        //hides and shows content in body panel
         $scope.currentRoom = !$scope.currentRoom;
+        //displays selected room name
         $scope.currentRoomName = room.name;
+        //add messages
         $scope.currentRoomID = room.$id;
     };
-    $scope.setRoom = Room.setRoom;
     //add messages
-    $scope.addChatRoomMessage = function(){
-            $scope.messageRooms.$add({
-                body: $scope.msg
-            });
-            $scope.msg =[];   
-    };
+
 }]);
 
 binChat.controller("ChatController", ["$scope", "$firebaseArray","Room", function ($scope, $firebaseArray, Room) {
@@ -84,28 +83,33 @@ binChat.factory("Room", ['$firebaseArray', function($firebaseArray) {
     var fbArray = $firebaseArray(firebaseRef);
     // create a synchronized room array
     var rooms = $firebaseArray(firebaseRef.child("rooms"));
+    // create a synchronized messages array
+    var messages = $firebaseArray(firebaseRef.child("messages"));
  
     return {
         //accesses firebase array 
         allArray: fbArray,
         //accesses "room" array
         allRooms: rooms,
+        //accesses "messages" array
+        allMessages: messages,
         // adds item to the "room" array
         addChatRoom: function(room){
             this.chatRooms.$add({
-                name: this.newMessageText,
+                name: this.newRoomName,
                 type: "Room"
             });
-            this.newMessageText =[];   
+            this.newRoomName =[];  
         },
         // removes item to the "room" array
         removeChatRoom: function(room){
             this.chatRooms.$remove(room); 
         },
-        // returns "room" in "chatRooms"
-        setRoom: function(room){
-            console.log(room);
-            return this.activeRoom = room;
+        addMessages: function(msgText){
+            this.chatMessages.$add({
+                content: this.msgText //change to msgText
+            });
+            this.msgText =[];   //change to msgText
         }
     };
 }]);
