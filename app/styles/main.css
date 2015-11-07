@@ -37,10 +37,8 @@ p {
 
 td {
     color: darkslategrey;
-    text-align: center;
     font-size:  1rem;
-    padding: 15px;
-    text-align: left;
+    text-align: center;
 }
 
 .logo-box {
@@ -123,16 +121,10 @@ td {
 
 .navbar .nav-list {
     display: table;
-    
-    margin: 5%;
-    margin-right: 25px;
     margin-left: 25px;
-    
-    padding: 2px;
-    padding-right: 2%;
-    padding-left: 5%;
-    
-    width: 100%;
+    padding-top: 10px;
+    width: 150px;
+    height: 50px;
     
     -webkit-border-radius: 8;
     -moz-border-radius: 3;
@@ -225,6 +217,8 @@ td {
     color: blanchedalmond;
     font-size: 1rem;
     background: salmon;
+    padding: 10px;
+    
     margin-left: 5%;
     margin-right: 5%;
     border: solid #fdd497 1px;

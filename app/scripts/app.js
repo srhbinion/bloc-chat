@@ -25,7 +25,7 @@ binChat.config(function($locationProvider, $stateProvider) {
 			url: "/index.html",
 			controller:"LandingController",
 			templateUrl:"/templates/landing.html"
-		});
+		})
         .state("chat",{
 			// properties of the state listed in "controller"
 			url: "/chat.html",
@@ -43,29 +43,32 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", func
     $scope.welcome = "Welcome, to Bloc Chat";
     //welcome text in body panel
     $scope.request = "Do you want to chat today?";
+    
     //accesses "room" array
     $scope.chatRooms = Room.allRooms;
-    //accesses "message" array
-    $scope.chatMessages = Room.allMessages;
+    
     // adds item to the "room" array
     $scope.addChatRoom = Room.addChatRoom;
-    // adds item to the "Messages" array
-    $scope.addMessages = Room.addMessages;
     // removes item from "room" array
     $scope.removeChatRoom = Room.removeChatRoom;
     //Room is set at false to hide message bar
     $scope.currentRoom = false;
+    
     //shows the selected room to current room
     $scope.setCurrentRoom = function(room){
         //hides and shows content in body panel
         $scope.currentRoom = !$scope.currentRoom;
         //displays selected room name
-        $scope.currentRoomName = room.name;
-        //add messages
-        $scope.currentRoomID = room.$id;
+        $scope.current ={
+            name: room.name,
+            roomId:room.$id
+        }
     };
-    //add messages
-
+    
+    //accesses "message" array
+    $scope.chatMessages = Room.allMessages;
+    // adds item to the "Messages" array
+    $scope.addMessages = Room.addMessages;
 }]);
 
 binChat.controller("ChatController", ["$scope", "$firebaseArray","Room", function ($scope, $firebaseArray, Room) {
@@ -91,8 +94,6 @@ binChat.factory("Room", ['$firebaseArray', function($firebaseArray) {
         allArray: fbArray,
         //accesses "room" array
         allRooms: rooms,
-        //accesses "messages" array
-        allMessages: messages,
         // adds item to the "room" array
         addChatRoom: function(room){
             this.chatRooms.$add({
@@ -105,9 +106,14 @@ binChat.factory("Room", ['$firebaseArray', function($firebaseArray) {
         removeChatRoom: function(room){
             this.chatRooms.$remove(room); 
         },
+        //accesses "messages" array
+        allMessages: messages,
         addMessages: function(msgText){
             this.chatMessages.$add({
-                content: this.msgText //change to msgText
+                userName: "name",
+                content: this.msgText,
+                sentAt: "time",
+                roomID: "room"
             });
             this.msgText =[];   //change to msgText
         }
