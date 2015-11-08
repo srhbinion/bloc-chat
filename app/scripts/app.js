@@ -43,32 +43,46 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", func
     $scope.welcome = "Welcome, to Bloc Chat";
     //welcome text in body panel
     $scope.request = "Do you want to chat today?";
-    
     //accesses "room" array
-    $scope.chatRooms = Room.allRooms;
-    
-    // adds item to the "room" array
-    $scope.addChatRoom = Room.addChatRoom;
-    // removes item from "room" array
-    $scope.removeChatRoom = Room.removeChatRoom;
-    //Room is set at false to hide message bar
-    $scope.currentRoom = false;
-    
-    //shows the selected room to current room
-    $scope.setCurrentRoom = function(room){
-        //hides and shows content in body panel
-        $scope.currentRoom = !$scope.currentRoom;
-        //displays selected room name
-        $scope.current ={
-            name: room.name,
-            roomId:room.$id
+    $scope.chatRooms = {
+        room: Room.allRooms,
+        // adds item to the "room" array
+        add: function(room){
+            $scope.chatRooms.room.$add({
+                name: $scope.newRoomName,
+                type: "Room"
+            });
+            $scope.newRoomName =[];  
+        },
+        // removes item from "room" array
+        remove: function(room){
+            $scope.chatRooms.room.$remove(room); 
+        },
+        //shows the selected room to current room
+        set: function(room){
+            //hides and shows content in body panel
+            $scope.currentRoom = !$scope.currentRoom;
+            //displays selected room name
+            $scope.current = {
+                name: room.name,
+                roomId: room.$id
+            };
         }
     };
-    
-    //accesses "message" array
-    $scope.chatMessages = Room.allMessages;
-    // adds item to the "Messages" array
-    $scope.addMessages = Room.addMessages;
+    $scope.chatMessages = {
+        //accesses "message" array
+        messages: Room.allMessages,
+        // adds item to the "Messages" array
+        add: function(msgText) {
+            $scope.chatMessages.messages.$add({
+                userName: "name",
+                content: $scope.msgText,
+                sentAt: Date.now(),
+                roomId: $scope.current.roomId
+            });
+            $scope.msgText =[];   //change to msgText
+        }
+    };
 }]);
 
 binChat.controller("ChatController", ["$scope", "$firebaseArray","Room", function ($scope, $firebaseArray, Room) {
@@ -94,28 +108,7 @@ binChat.factory("Room", ['$firebaseArray', function($firebaseArray) {
         allArray: fbArray,
         //accesses "room" array
         allRooms: rooms,
-        // adds item to the "room" array
-        addChatRoom: function(room){
-            this.chatRooms.$add({
-                name: this.newRoomName,
-                type: "Room"
-            });
-            this.newRoomName =[];  
-        },
-        // removes item to the "room" array
-        removeChatRoom: function(room){
-            this.chatRooms.$remove(room); 
-        },
         //accesses "messages" array
-        allMessages: messages,
-        addMessages: function(msgText){
-            this.chatMessages.$add({
-                userName: "name",
-                content: this.msgText,
-                sentAt: "time",
-                roomID: "room"
-            });
-            this.msgText =[];   //change to msgText
-        }
+        allMessages: messages
     };
 }]);
