@@ -45,8 +45,6 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", func
     $scope.request = "Do you want to chat today?";
     //creates user
     $scope.user = "user " + Math.round(Math.random()*(1-50));
-    
-    $scope.display = Room.queryMessages;
     //accesses "room" array
     $scope.chatRooms = {
         room: Room.allRooms,
@@ -71,9 +69,10 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", func
                 name: room.name,
                 roomId: room.$id
             };
-            $scope.currentId = Room.getRoomById($scope.current.roomId);
+    
         }
     };
+    $scope.messages = Room.allMessages;
     $scope.chatMessages = {
         //accesses "message" array
         messages: Room.allMessages,
@@ -111,16 +110,13 @@ binChat.factory("Room", ['$firebaseArray', function($firebaseArray) {
     var rooms = $firebaseArray(firebaseRef.child("rooms"));
     // create a synchronized messages array
     var messages = $firebaseArray(firebaseRef.child("messages"));
- 
+
     return {
         //accesses firebase array 
         allArray: fbArray,
         //accesses "room" array
         allRooms: rooms,
         //accesses "messages" array
-        allMessages: messages,
-        showMessages: function(room, callback) {
-            room.child("messages").on("value", callback);
-        }
+        allMessages: messages
     };
 }]);

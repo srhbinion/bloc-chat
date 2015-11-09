@@ -6,7 +6,7 @@
 </div>
 <!--Title Bar-->
 <div class="title-bar">
-    <h1 ng-show="chatRooms.set">{{current.name}}</h1>
+    <h1>{{current.name}}</h1>
 </div>
 <!--Room Bar/Nav-->
 <nav class="navbar">
@@ -22,20 +22,17 @@
             <!--Add a Room -->
             <td class="nav-list" ng-click="chatRooms.set(room)">Room {{ $index + 1 }}: {{room.name}}</td>
             <!-- DELETE a Room -->
-            <td class="btn" ng-click="chatRooms.remove(room)" type="click">x</td> 
+            <td class="btn" ng-click="chatRooms.remove(room)" type="click">x</td>
         </tr>
     </table>
 </nav>
 <div class="body-pannel">
-    <div ng-show="chatRooms.set">
+    <div>
         <!--Message-->
         <h3>Current Chat Session</h3>
-        <table ng-repeat="msg in chatMessages.messages">
+        <table ng-repeat="msg in messages" ng-show="current.roomId == msg.roomId">
             <tr>
                 <td>{{user}} {{msg.content}} {{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</td>
-            </tr>
-            <tr>
-                <td>{{display}}</td>    
             </tr>
         </table>
     </div>
