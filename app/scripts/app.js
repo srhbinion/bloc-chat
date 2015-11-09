@@ -43,6 +43,10 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", func
     $scope.welcome = "Welcome, to Bloc Chat";
     //welcome text in body panel
     $scope.request = "Do you want to chat today?";
+    //creates user
+    $scope.user = "user " + Math.round(Math.random()*(1-50));
+    
+    $scope.display = Room.queryMessages;
     //accesses "room" array
     $scope.chatRooms = {
         room: Room.allRooms,
@@ -67,6 +71,7 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", func
                 name: room.name,
                 roomId: room.$id
             };
+            $scope.currentId = Room.getRoomById($scope.current.roomId);
         }
     };
     $scope.chatMessages = {
@@ -75,12 +80,16 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", func
         // adds item to the "Messages" array
         add: function(msgText) {
             $scope.chatMessages.messages.$add({
-                userName: "name",
+                userName: $scope.user,
                 content: $scope.msgText,
                 sentAt: Date.now(),
                 roomId: $scope.current.roomId
             });
-            $scope.msgText =[];   //change to msgText
+            $scope.msgText =[];
+        },
+        // removes item from "Messages" array
+        remove: function(msgText){
+            $scope.chatMessages.messages.$remove(msgText); 
         }
     };
 }]);
@@ -109,6 +118,9 @@ binChat.factory("Room", ['$firebaseArray', function($firebaseArray) {
         //accesses "room" array
         allRooms: rooms,
         //accesses "messages" array
-        allMessages: messages
+        allMessages: messages,
+        showMessages: function(room, callback) {
+            room.child("messages").on("value", callback);
+        }
     };
 }]);

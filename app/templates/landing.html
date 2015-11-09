@@ -6,8 +6,7 @@
 </div>
 <!--Title Bar-->
 <div class="title-bar">
-    <h1 ng-hide="currentRoom">{{welcome}}</h1>
-    <h1 ng-show="currentRoom">{{current.name}}</h1>
+    <h1 ng-show="chatRooms.set">{{current.name}}</h1>
 </div>
 <!--Room Bar/Nav-->
 <nav class="navbar">
@@ -28,28 +27,21 @@
     </table>
 </nav>
 <div class="body-pannel">
-    <div ng-hide="currentRoom">
-        <h1>{{request}}</h1>
-    </div>
-    <div ng-show="currentRoom">
+    <div ng-show="chatRooms.set">
         <!--Message-->
         <h3>Current Chat Session</h3>
-        <table ng-repeat="msgText in chatMessages.messages">
+        <table ng-repeat="msg in chatMessages.messages">
             <tr>
-                <td>User One: {{msgText.content}} {{msgText.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</td>
+                <td>{{user}} {{msg.content}} {{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</td>
             </tr>
-        </table>
-        <br>
-        <h3>Current Chat Session</h3>
-        <table ng-repeat="name in chatMessages.setMore">
             <tr>
-                <td>User One: {{msgText.content}}</td>
+                <td>{{display}}</td>    
             </tr>
         </table>
     </div>
 </div>
 <!--Message Bar/Footer-->
-<div class="footer-bar" ng-show="currentRoom">
+<div class="footer-bar" ng-show="chatRooms.set">
     <form class="search-bar" ng-submit="chatMessages.add()">
         <input placeholder="Type a message..." ng-model="msgText"/>
         <button class="links-container" type="submit">Submit</button>
