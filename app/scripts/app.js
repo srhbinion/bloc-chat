@@ -25,12 +25,6 @@ binChat.config(function($locationProvider, $stateProvider) {
 			url: "/index.html",
 			controller:"LandingController",
 			templateUrl:"/templates/landing.html"
-		})
-        .state("chat",{
-			// properties of the state listed in "controller"
-			url: "/chat.html",
-			controller:"ChatController",
-			templateUrl:"/templates/chat.html"
 		});
 });
 
@@ -91,10 +85,6 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", func
             $scope.chatMessages.messages.$remove(msgText); 
         }
     };
-}]);
-
-binChat.controller("ChatController", ["$scope", "$firebaseArray","Room", function ($scope, $firebaseArray, Room) {
-    //Maybe I don't need this
 }]);
 
 /**
