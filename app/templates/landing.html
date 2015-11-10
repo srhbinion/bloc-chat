@@ -1,44 +1,41 @@
-<!--Logo Box--> 
+<!--Logo box--> 
 <div class="logo-box">
-    <a ui-sref="landing" class="logo">
-        <img src="/assets/images/bChat3.png" alt="bloc chat logo">
-    </a>
+    <img src="/assets/images/bChat3.png" alt="bloc chat logo">
 </div>
-<!--Title Bar-->
+<!--Title bar-->
 <div class="title-bar">
     <h1>{{current.name}}</h1>
 </div>
-<!--Room Bar/Nav-->
+<!--Navigation & list of chat rooms-->
 <nav class="navbar">
-    <!--Chat Rooms Panel-->
+    <!--Chat rooms-->
     <form class="nav-list-first" ng-submit="chatRooms.add(room)">
-        <!--Create Rooms-->
+        <!--Create a chat room name-->
         <input placeholder="Create Room..." ng-model="newRoomName"/>
         <button class="sign-bar" type="submit">Go!</button>
     </form>
-    <!--List of Rooms-->
+    <!--List of all current chat rooms-->
     <table ng-repeat="room in chatRooms.room">
         <tr>
-            <!--Add a Room -->
+            <!--Current room template -->
             <td class="nav-list" ng-click="chatRooms.set(room)">Room {{ $index + 1 }}: {{room.name}}</td>
-            <!-- DELETE a Room -->
+            <!-- DELETE a room -->
             <td class="btn" ng-click="chatRooms.remove(room)" type="click">x</td>
         </tr>
     </table>
 </nav>
+<!--Message display area-->
 <div class="body-pannel">
-    <div>
-        <!--Message-->
-        <h3>Current Chat Session</h3>
-        <table ng-repeat="msg in messages" ng-show="current.roomId == msg.roomId">
-            <tr>
-                <td>{{user}} {{msg.content}} {{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</td>
-            </tr>
-        </table>
-    </div>
+    <!--List of all current message in a selected room-->
+    <table ng-repeat="msg in messages" ng-show="current.roomId == msg.roomId">
+        <tr>
+            <!--Message template-->
+            <td>{{user}} {{msg.content}} {{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</td>
+        </tr>
+    </table>
 </div>
-<!--Message Bar/Footer-->
-<div class="footer-bar" ng-show="chatRooms.set">
+<!--Create a message/ footer-->
+<div class="footer-bar">
     <form class="search-bar" ng-submit="chatMessages.add()">
         <input placeholder="Type a message..." ng-model="msgText"/>
         <button class="links-container" type="submit">Submit</button>
