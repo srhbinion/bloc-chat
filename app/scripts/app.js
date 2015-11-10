@@ -41,13 +41,11 @@ binChat.config(function($locationProvider, $stateProvider) {
  * Stops the loading of the page and promps the user to sign in with a username. Cookie stores the user name.
  * @param  {function} $cookie    - html code for displaying differnt views
  */
-binChat.run(["$cookies", "$modal", function ($cookies, $modal) {
+binChat.run(["$cookies", "$uibModal", function ($cookies, $uibModal) {
    if(!$cookies.binChatCurrentUser || $cookies.binChatCurrentUser === " "){
        console.log("Javascript is magic");
-       var getUserName = $cookies.get("binChatCurrentUser");
-       console.log(getUserName);
        
-       $modal.open({
+       $uibModal.open({
            templateUrl:"/templates/myModalContent.html",
            controller: "ModalInstanceCtrl",
            size: "sm"
