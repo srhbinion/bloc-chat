@@ -20,14 +20,6 @@ binChat.config(function($locationProvider, $stateProvider) {
         //avoids common $location errors
         requireBase: false
     });
-	//State Provider - sets up an address for each template state
-	$stateProvider
-		.state("modal",{
-			// properties of the state listed in "controller"
-			url: "#",
-			controller:"UserModalInstanceCtrl",
-			templateUrl:"/templates/myModalContent.html"
-    });
     $stateProvider
 		.state("landing",{
 			// properties of the state listed in "controller"
@@ -42,9 +34,9 @@ binChat.config(function($locationProvider, $stateProvider) {
  * @param  {function} $cookie    - html code for displaying differnt views
  */
 binChat.run(["$cookies", "$uibModal", function ($cookies, $uibModal) {
-   if(!$cookies.binChatCurrentUser || $cookies.binChatCurrentUser === " "){
-       console.log("Javascript is magic");
-       
+   //condition to open model if ture
+    if(!$cookies.binChatCurrentUser || $cookies.binChatCurrentUser === " "){
+       //The modal opens with this page and conditions
        $uibModal.open({
            templateUrl:"/templates/myModalContent.html",
            controller: "ModalInstanceCtrl",
@@ -60,8 +52,6 @@ binChat.run(["$cookies", "$uibModal", function ($cookies, $uibModal) {
 binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", function($scope, $firebaseArray, Room) {
     //welcome text in body panel
     $scope.welcome = "Welcome, to Bloc Chat";
-    //creates a random user numbers - TODO add ability to creat custom usernames
-    $scope.userName = "user " + Math.round(Math.random()*(1-50));
     //"room" array features
     $scope.chatRooms = {
         //accesses "room" array
@@ -114,24 +104,28 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", func
     };
 }]);
 
-binChat.controller("ModalInstanceCtrl", ["$scope", "$modalInstance", "$cookieStore", "Room", function($scope, $modalInstance, $cookieStore, Room) { 
+/**
+ * controller controlls the modal features
+ * @param  {array} cookieStore  - cookie array stores data
+ */
+binChat.controller("ModalInstanceCtrl", ["$scope", "$modalInstance", "$cookieStore", function($scope, $modalInstance, $cookieStore) { 
     $scope.userName = {
+        // stores the username to the cookie array
         add: function(name) {
-            console.log("ok");
             $cookieStore.put("binChatCurrentUser", name);
+            //closes modal after completeing function
             $modalInstance.close();
         },
+        // removes item from the cookie array
         remove: function(name) {
-            console.log("out");
             $cookieStore.remove("binChatCurrentUser", name);
+            //closes modal after completeing function
             $modalInstance.close();
         },
+        //closes modal
         cancel: function () {
             $modalInstance.dismiss("cancel");
         }
-        //set: function(){
-        //    $scope.getName = $cookieStore.get("binChatCurrentUser");
-        //}
     };
 }]);
 
@@ -142,16 +136,12 @@ binChat.controller("ModalInstanceCtrl", ["$scope", "$modalInstance", "$cookieSto
 binChat.factory("Room", ["$firebaseArray", function($firebaseArray) {
     // link to app's firebase database
     var firebaseRef = new Firebase("https://binchat.firebaseio.com/");
-    // create a synchronized general array
-    var fbArray = $firebaseArray(firebaseRef);
     // create a synchronized room array
     var rooms = $firebaseArray(firebaseRef.child("rooms"));
     // create a synchronized messages array
     var messages = $firebaseArray(firebaseRef.child("messages"));
 
     return {
-        //accesses firebase array 
-        allArray: fbArray,
         //accesses "room" array
         allRooms: rooms,
         //accesses "messages" array
