@@ -148,3 +148,36 @@ binChat.factory("Room", ["$firebaseArray", function($firebaseArray) {
         allMessages: messages
     };
 }]);
+
+binChat.factory("Message", ["$firebaseArray", function($firebaseArray) {
+    // link to app's firebase database
+    var firebaseRef = new Firebase("https://binchat.firebaseio.com/");
+
+
+    return {
+        //accesses "room" array
+        send: function(newMessage)
+        {
+            //code
+        },
+        //accesses "message" array
+        //messages: Room.allMessages,
+        // adds item to the "Messages" array
+        //add: function(msgText) {
+        //    $scope.chatMessages.messages.$add({
+                //userName: $scope.userName,
+        //        content: $scope.msgText,
+        //        sentAt: Date.now(),
+        //        roomId: $scope.current.roomId
+        //     });
+            // temp holding array for new message information
+        //    $scope.msgText =[];
+        //},
+        // removes item from "Messages" array
+        //remove: function(msgText){
+        //    $scope.chatMessages.messages.$remove(msgText); 
+        //}
+    };
+
+    };
+}]);
