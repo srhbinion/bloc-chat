@@ -87,7 +87,16 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", "Mes
         //accesses "message" array
         messages: Room.allMessages,
         // adds item to the "Messages" array
-        add: Message.send,
+        add: function() {
+            $scope.chatMessages.messages.$add({
+                //userName: Room.send,
+                content: $scope.msgText,
+                sentAt: Date.now(),
+                roomId: $scope.current.roomId
+            });
+            // temp holding array for new message information
+            $scope.msgText =[];
+        },
         // removes item from "Messages" array
         remove: function(msgText){
             $scope.chatMessages.messages.$remove(msgText); 
@@ -148,27 +157,15 @@ binChat.factory("Message", ["$firebaseArray", "$cookieStore", function($firebase
 
     return {
          //adds item to the "Messages" array
-        send: function(msgText, roomId) {
+        send: function($cookieStore) {
             var msgText = [];
             console.log(messages);
             if (msgText){
                 messages.$add({
-                    date: Date.now(),
-                    //content: msgText,
-                    type: "bety",
-                    //userName:$cookieStore.get("binChatCurrentUser")
+                    userName:$cookieStore.get(binChatCurrentUser),
+                    type: "Neon"
                 });
             }
-
-        //add: function(msgText) {
-        //    $scope.chatMessages.messages.$add({
-                //userName: $scope.userName,
-        //        content: $scope.msgText,
-        //        sentAt: Date.now(),
-        //        roomId: $scope.current.roomId
-        //     });
-        // temp holding array for new message information
-        //    $scope.msgText =[];
         }
     };
 }]);
