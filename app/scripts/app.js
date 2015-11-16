@@ -49,7 +49,7 @@ binChat.run(["$cookies", "$uibModal", function ($cookies, $uibModal) {
  * Controls the landing view and the creation and subtraction of chat rooms.
  * @return {array}  - adds and removes chat rooms in the firebase array for rooms
  */
-binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", function($scope, $firebaseArray, Room) {
+binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", "Message", function($scope, $firebaseArray, Room, Message) {
     //welcome text in body panel
     $scope.welcome = "Welcome, to Bloc Chat";
     //"room" array features
@@ -87,16 +87,7 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", func
         //accesses "message" array
         messages: Room.allMessages,
         // adds item to the "Messages" array
-        add: function(msgText) {
-            $scope.chatMessages.messages.$add({
-                //userName: $scope.userName,
-                content: $scope.msgText,
-                sentAt: Date.now(),
-                roomId: $scope.current.roomId
-            });
-            // temp holding array for new message information
-            $scope.msgText =[];
-        },
+        add: Message.send,
         // removes item from "Messages" array
         remove: function(msgText){
             $scope.chatMessages.messages.$remove(msgText); 
@@ -105,7 +96,7 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", func
 }]);
 
 /**
- * controller controlls the modal features
+ * controller comands the modal features
  * @param  {array} cookieStore  - cookie array stores data
  */
 binChat.controller("ModalInstanceCtrl", ["$scope", "$modalInstance", "$cookieStore", function($scope, $modalInstance, $cookieStore) { 
@@ -149,20 +140,26 @@ binChat.factory("Room", ["$firebaseArray", function($firebaseArray) {
     };
 }]);
 
-binChat.factory("Message", ["$firebaseArray", function($firebaseArray) {
+binChat.factory("Message", ["$firebaseArray", "$cookieStore", function($firebaseArray, $cookieStore) {
     // link to app's firebase database
     var firebaseRef = new Firebase("https://binchat.firebaseio.com/");
-
+    // create a synchronized messages array
+    var messages = $firebaseArray(firebaseRef.child("messages"))
 
     return {
-        //accesses "room" array
-        send: function(newMessage)
-        {
-            //code
-        },
-        //accesses "message" array
-        //messages: Room.allMessages,
-        // adds item to the "Messages" array
+         //adds item to the "Messages" array
+        send: function(msgText, roomId) {
+            var msgText = [];
+            console.log(messages);
+            if (msgText){
+                messages.$add({
+                    date: Date.now(),
+                    //content: msgText,
+                    type: "bety",
+                    //userName:$cookieStore.get("binChatCurrentUser")
+                });
+            }
+
         //add: function(msgText) {
         //    $scope.chatMessages.messages.$add({
                 //userName: $scope.userName,
@@ -170,14 +167,8 @@ binChat.factory("Message", ["$firebaseArray", function($firebaseArray) {
         //        sentAt: Date.now(),
         //        roomId: $scope.current.roomId
         //     });
-            // temp holding array for new message information
+        // temp holding array for new message information
         //    $scope.msgText =[];
-        //},
-        // removes item from "Messages" array
-        //remove: function(msgText){
-        //    $scope.chatMessages.messages.$remove(msgText); 
-        //}
-    };
-
+        }
     };
 }]);
