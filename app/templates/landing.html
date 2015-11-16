@@ -31,6 +31,9 @@
         <tr>
             <!--Message template-->
             <td>{{msg.userName}} {{msg.content}} {{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</td>
+            <!--TODO check aggignment -->
+            <td class="btn" ng-submit="chatRooms.room.$remove" type="submit">x</td>
+            
         </tr>
     </table>
 </div>
