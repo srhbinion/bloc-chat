@@ -30,7 +30,7 @@
     <table ng-repeat="msg in messages" ng-show="current.roomId == msg.roomId">
         <tr>
             <!--Message template-->
-            <td>{{user}} {{msg.content}} {{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</td>
+            <td>{{msg.userName}} {{msg.content}} {{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</td>
         </tr>
     </table>
 </div>

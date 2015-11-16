@@ -89,7 +89,7 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", "Mes
         // adds item to the "Messages" array
         add: function() {
             $scope.chatMessages.messages.$add({
-                //userName: Room.send,
+                userName: Message.getUser(),
                 content: $scope.msgText,
                 sentAt: Date.now(),
                 roomId: $scope.current.roomId
@@ -153,19 +153,15 @@ binChat.factory("Message", ["$firebaseArray", "$cookieStore", function($firebase
     // link to app's firebase database
     var firebaseRef = new Firebase("https://binchat.firebaseio.com/");
     // create a synchronized messages array
-    var messages = $firebaseArray(firebaseRef.child("messages"))
+    var messages = $firebaseArray(firebaseRef.child("messages"));
+    console.log($cookieStore);
 
     return {
          //adds item to the "Messages" array
-        send: function($cookieStore) {
-            var msgText = [];
-            console.log(messages);
-            if (msgText){
-                messages.$add({
-                    userName:$cookieStore.get(binChatCurrentUser),
-                    type: "Neon"
-                });
-            }
+        getUser: function(){
+            var userName = $cookieStore.get("binChatCurrentUser");
+            //ternary operator
+            return userName ? userName : "unknown user";
         }
     };
 }]);
