@@ -12,6 +12,7 @@
     <form class="nav-list-first" ng-submit="chatRooms.add(room)">
         <!--Create a chat room name-->
         <input placeholder="Create Room..." ng-model="newRoomName"/>
+        <!--button that pushes room name to firebase-->
         <button class="sign-bar" type="submit">Go!</button>
     </form>
     <!--List of all current chat rooms-->
@@ -19,25 +20,32 @@
         <tr>
             <!--Current room template -->
             <td class="nav-list" ng-click="chatRooms.set(room)">Room {{ $index + 1 }}: {{room.name}}</td>
-            <!-- DELETE a room -->
-            <td class="btn" ng-click="chatRooms.remove(room)" type="click">x</td>
+            <!-- button that DELETE a room from firebase -->
+            <td><button class="btn" ng-click="chatRooms.remove(room)" type="click">x</button></td>
         </tr>
     </table>
 </nav>
 <!--Message display area-->
 <div class="body-pannel">
+    <div ng-hide ="current.roomId">
+        <h2>{{welcome}}</h2>
+    </div>
     <!--List of all current message in a selected room-->
     <table ng-repeat="msg in messages" ng-show="current.roomId == msg.roomId">
         <tr>
             <!--Message template-->
-            <td>{{user}} {{msg.content}} {{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</td>
+            <td>{{msg.userName}} {{msg.content}} {{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</td>
+            <!--button that deletes message from firebase -->
+            <td><button class="btn" ng-click="chatMessages.remove(msg)" type="click">x</button></td>   
         </tr>
     </table>
 </div>
 <!--Create a message/ footer-->
 <div class="footer-bar">
     <form class="search-bar" ng-submit="chatMessages.add()">
+        <!--form box to input text -->
         <input placeholder="Type a message..." ng-model="msgText"/>
+        <!--button that adds message to firebase -->
         <button class="links-container" type="submit">Submit</button>
     </form>
 </div>
