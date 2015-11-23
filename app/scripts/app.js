@@ -82,6 +82,9 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", "Mes
             };
         }
     };
+    $scope.fake = function(){
+       return false;
+    };
     //"message" array features
     $scope.chatMessages = {
         //accesses "message" array
