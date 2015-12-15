@@ -50,7 +50,7 @@ binChat.run(["$cookies", "$uibModal", function ($cookies, $uibModal) {
  * @return {array}  - adds and removes chat rooms in the firebase array for rooms
  */
 binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", "Message", function($scope, $firebaseArray, Room, Message) {
-    $scope.welcome = "Hello! Select a room to join Bin Chat";
+    $scope.welcome = "Hello! Select a room to join Bloc Chat";
     //"message" array
     $scope.messages = Room.allMessages;
 	//user name

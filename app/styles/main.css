@@ -55,7 +55,7 @@ p {
     padding-top: 20px;
     padding-right: 2%;
     padding-left: 2%;
-    background-color: #f8f6ed;
+    background-color: #fef7e4;
     border-bottom: 1px solid #d2d2d2;
 }
 
@@ -142,11 +142,59 @@ p {
     right: 0px;
     height: 100%;
     width: 75%;
+    border: 1px solid #d5d5d5; 
+	background-color: green;
+}
+
+.hero-content {
+	position: relative;
+	min-height: 600px;
+	top: 0px;
+	background-image: url(../assets/images/light.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	height: 100%;
+}
+
+.hero-content .hero-title {
+     position: absolute;
+     top: 40%;
+     -webkit-transform: translateY(-50%);
+     -moz-transform: translateY(-50%);
+     transform: translateY(-50%);
+     width: 100%;
+     text-align: center;
+     font-size: 4rem;
+     font-weight: 500;
+     text-transform: uppercase;
+     letter-spacing: 0.5rem;
+     /*Drop shaddow effect*/
+     text-shadow: 0 1px 0 #ccc, 
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+ }
+
+.body-pannel-chat {
+    position: fixed;
+    top: 75px;
+    right: 0px;
+    height: 100%;
+    width: 75%;
     padding-top: px;
     padding-bottom: 10px;
     padding-right: 2%;
     padding-left: 2%;
-    background-color: lightgoldenrodyellow;
+    background-color: whitesmoke;
     border: 1px solid #d5d5d5; 
 }
 
@@ -169,6 +217,7 @@ p {
     height: 100%;
     width: 100%;
     text-decoration: none;
+	background-color: green;
 }
 
 .footer-bar{
@@ -176,10 +225,10 @@ p {
     bottom: 0px;
     right: 0px;
     width:75%;
-    height: 150px;
+    height: 75px;
     padding-left: 1%;
     padding-right: 1%;
-    background-color: #f8f6ed;
+    background-color: #fef7e4;
     border-top: 1px solid #d5d5d5; 
 }
 

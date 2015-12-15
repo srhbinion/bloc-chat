@@ -35,21 +35,24 @@
 </div>
 <!--Message display area-->
 <div class="body-pannel">
-    <div ng-hide ="current.roomId">
-        <h2>{{welcome}}</h2>
+    <div class="hero-content" ng-hide="current.roomId">
+        <h2 class="hero-title">{{welcome}}</h2>
+		<p>test</p>
     </div>
     <!--List of all current message in a selected room-->
-    <table ng-repeat="msg in messages" ng-show="current.roomId == msg.roomId">
-        <tr>
-            <!--Message template-->
-            <td>{{msg.userName}} {{msg.content}} {{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</td>
-            <!--button that deletes message from firebase -->
-            <td><button class="btn" ng-click="chatMessages.remove(msg)" type="click">x</button></td>   
-        </tr>
-    </table>
+	<div class="body-pannel-chat" ng-show="current.roomId">
+		<table ng-repeat="msg in messages" ng-show="current.roomId == msg.roomId">
+			<tr>
+				<!--Message template-->
+				<td>{{msg.userName}} {{msg.content}} {{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</td>
+				<!--button that deletes message from firebase -->
+				<td><button class="btn" ng-click="chatMessages.remove(msg)" type="click">x</button></td>   
+			</tr>
+    	</table>
+	</div>
 </div>
 <!--Create a message/ footer-->
-<div class="footer-bar">
+<div class="footer-bar" ng-show="current.roomId">
     <form class="search-bar" ng-submit="chatMessages.add()">
         <!--form box to input text -->
         <input placeholder="Type a message..." ng-model="msgText"/>
