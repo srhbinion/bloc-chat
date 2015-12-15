@@ -13,23 +13,26 @@
         <!--Create a chat room name-->
         <input placeholder="Create Room..." ng-model="newRoomName"/>
         <!--button that pushes room name to firebase-->
-        <button class="sign-bar" type="submit">Go!</button>
+        <button class="sign-bar" class ="ng-pristine" type="submit">Go!</button>
     </form>
-	
     <!--List of all current chat rooms-->
     <table class="nav-list">
 		<tr class="nav-list">
-			<td><h2>Active Room: </h2></td>
-			<td><h2>{{ chatRooms.room.length }}</h2></td>
+			<td>Active Rooms: {{ chatRooms.room.length }} </td>
+			<td></td>
 		</tr>
-        <tr ng-repeat="room in chatRooms.room" class="nav-list-room">
+        <tr ng-repeat="room in chatRooms.room" class="nav-list-room" >
             <!--Current room template -->
-            <td ng-click="chatRooms.set(room)">Room {{ $index + 1 }}: {{room.name}}</td>
+            <td ng-click="chatRooms.set(room)">Room {{ $index + 1 }}: {{room.name | limitTo:25 }}</td>
             <!-- button that DELETE a room from firebase -->
             <td ng-click="chatRooms.remove(room)" type="click">x</td>
         </tr>
     </table>
 </nav>
+<!--User name-->
+<div class="user-name">
+	<h5>User Name: {{currentUserName.show}}</h5>
+</div>
 <!--Message display area-->
 <div class="body-pannel">
     <div ng-hide ="current.roomId">

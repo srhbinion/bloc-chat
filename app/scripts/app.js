@@ -53,6 +53,10 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", "Mes
     $scope.welcome = "Hello! Select a room to join Bin Chat";
     //"message" array
     $scope.messages = Room.allMessages;
+	//user name
+	$scope.currentUserName = {
+		show: Message.getUser()
+	};
     //"room" array features
     $scope.chatRooms = {
         //accesses "room" array
@@ -81,9 +85,6 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", "Mes
                 roomId: room.$id
             };
         }
-    };
-    $scope.fake = function(){
-       return false;
     };
     //"message" array features
     $scope.chatMessages = {

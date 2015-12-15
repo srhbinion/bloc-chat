@@ -8,7 +8,7 @@ html {
     height: 100%; /*100 browser window*/
     background-color: #ffffff;
     font-family: "Roboto","Helvetica","sans-serif";
-    color: darkslategray;
+    color: red;
 }
 
 h1 {
@@ -125,6 +125,17 @@ p {
 	background-color: #007984;
 }
 
+.user-name {
+	position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width:25%;
+	height: 75px;
+	padding: 25px;
+    background-color: #007984;
+	border-right: 2px solid #d2d2d2;
+}
+
 .body-pannel {
     position: fixed;
     top: 75px;
@@ -168,7 +179,7 @@ p {
     height: 150px;
     padding-left: 1%;
     padding-right: 1%;
-    background-color: #f1f1f1;
+    background-color: #f8f6ed;
     border-top: 1px solid #d5d5d5; 
 }
 
