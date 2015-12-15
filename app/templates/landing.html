@@ -15,13 +15,18 @@
         <!--button that pushes room name to firebase-->
         <button class="sign-bar" type="submit">Go!</button>
     </form>
+	
     <!--List of all current chat rooms-->
-    <table ng-repeat="room in chatRooms.room">
-        <tr>
+    <table class="nav-list">
+		<tr class="nav-list">
+			<td><h2>Active Room: </h2></td>
+			<td><h2>{{ chatRooms.room.length }}</h2></td>
+		</tr>
+        <tr ng-repeat="room in chatRooms.room" class="nav-list-room">
             <!--Current room template -->
-            <td class="nav-list" ng-click="chatRooms.set(room)">Room {{ $index + 1 }}: {{room.name}}</td>
+            <td ng-click="chatRooms.set(room)">Room {{ $index + 1 }}: {{room.name}}</td>
             <!-- button that DELETE a room from firebase -->
-            <td><button class="btn" ng-click="chatRooms.remove(room)" type="click">x</button></td>
+            <td ng-click="chatRooms.remove(room)" type="click">x</td>
         </tr>
     </table>
 </nav>
