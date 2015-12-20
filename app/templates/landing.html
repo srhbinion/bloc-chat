@@ -18,20 +18,21 @@
     <!--List of all current chat rooms-->
     <table class="nav-list">
 		<tr class="nav-list">
-			<td>Active Rooms: {{ chatRooms.room.length }} </td>
+			<td><h3>Active Rooms: {{ chatRooms.room.length }}</h3></td>
 			<td></td>
 		</tr>
         <tr ng-repeat="room in chatRooms.room" class="nav-list-room" >
             <!--Current room template -->
-            <td ng-click="chatRooms.set(room)">Room {{ $index + 1 }}: {{room.name | limitTo:25 }}</td>
+            <td class="room-name" ng-click="chatRooms.set(room)">Room {{ $index + 1 }}: {{room.name | limitTo:25 }}</td>
             <!-- button that DELETE a room from firebase -->
-            <td ng-click="chatRooms.remove(room)" type="click">x</td>
+            <td class="room-name" ng-click="chatRooms.remove(room)" type="click">x</td>
         </tr>
     </table>
 </nav>
 <!--User name-->
 <div class="user-name">
-	<h5>User Name: {{currentUserName.show}}</h5>
+	<img src="/assets/images/user.png" alt="bloc chat logo">
+	<h3>User Name: {{currentUserName.show}}</h3>
 </div>
 <!--Message display area-->
 <div class="body-pannel">
@@ -43,10 +44,10 @@
 	<div class="body-pannel-chat" ng-show="current.roomId">
 		<table ng-repeat="msg in messages" ng-show="current.roomId == msg.roomId">
 			<tr>
-				<!--Message template-->
-				<td>{{msg.userName}} {{msg.content}} {{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</td>
 				<!--button that deletes message from firebase -->
-				<td><button class="btn" ng-click="chatMessages.remove(msg)" type="click">x</button></td>   
+				<td><button class="btn" ng-click="chatMessages.remove(msg)" type="click">x</button></td>
+				<!--Message template-->
+				<td>{{msg.userName}}{{msg.content}}<br>{{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</td>   
 			</tr>
     	</table>
 	</div>
