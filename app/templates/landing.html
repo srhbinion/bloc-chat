@@ -16,18 +16,15 @@
         <button class="sign-bar" class ="ng-pristine" type="submit">Go!</button>
     </form>
     <!--List of all current chat rooms-->
-    <table class="nav-list">
-		<tr class="nav-list">
-			<td><h3>Active Rooms: {{ chatRooms.room.length }}</h3></td>
-			<td></td>
-		</tr>
-        <tr ng-repeat="room in chatRooms.room" class="nav-list-room" >
-            <!--Current room template -->
-            <td class="room-name" ng-click="chatRooms.set(room)">Room {{ $index + 1 }}: {{room.name | limitTo:25 }}</td>
-            <!-- button that DELETE a room from firebase -->
-            <td class="room-name" ng-click="chatRooms.remove(room)" type="click">x</td>
-        </tr>
-    </table>
+	<div>
+		<h3 class="room-list-first">Active Rooms: {{ chatRooms.room.length }}</h3>
+		<ul type="list" class="nav-list" ng-repeat="room in chatRooms.room" >
+			<!--Current room template -->
+			<li class="room-name" ng-click="chatRooms.set(room)">Room {{ $index + 1 }}: {{ room.name | limitTo:25 }}</li>
+			<!-- button that DELETE a room from firebase -->
+			<li class="room-remove" type="click" ng-click="chatRooms.remove(room)">X</li>
+		</ul>
+	</div>
 </nav>
 <!--User name-->
 <div class="user-name">
@@ -42,14 +39,14 @@
     </div>
     <!--List of all current message in a selected room-->
 	<div class="body-pannel-chat" ng-show="current.roomId">
-		<table ng-repeat="msg in messages" ng-show="current.roomId == msg.roomId">
-			<tr>
-				<!--button that deletes message from firebase -->
-				<td><button class="btn" ng-click="chatMessages.remove(msg)" type="click">x</button></td>
-				<!--Message template-->
-				<td>{{msg.userName}}{{msg.content}}<br>{{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</td>   
-			</tr>
-    	</table>
+		<!--Message template-->
+		<ul type="list" ng-repeat="msg in messages" ng-show="current.roomId == msg.roomId">
+			<!--button that deletes message from firebase -->
+			<li ng-click="chatMessages.remove(msg)" type="click">X</li>
+			<li>{{msg.userName}}</li>
+			<li>{{msg.content}}</li>
+			<li>{{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</li>
+		</ul>
 	</div>
 </div>
 <!--Create a message/ footer-->

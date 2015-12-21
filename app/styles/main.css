@@ -32,31 +32,48 @@ h2{
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5rem;
+	color: darkgray;
     /*Drop shaddow effect*/
-    text-shadow: 0 1px 0 #ccc,
-		0 2px 0 #c9c9c9,
-        0 3px 0 #bbb,
-        0 4px 0 #b9b9b9,
-        0 5px 0 #aaa,
-        0 6px 1px rgba(0,0,0,.1),
-        0 0 5px rgba(0,0,0,.1),
-        0 1px 3px rgba(0,0,0,.3),
-        0 3px 5px rgba(0,0,0,.2),
-        0 5px 10px rgba(0,0,0,.25),
-        0 10px 10px rgba(0,0,0,.2),
-        0 20px 20px rgba(0,0,0,.15);
+    text-shadow: 0 1px 0 #d2d2d2,
+		0 2px 0 #d5d5d5;
 }
 
-h3{
+h3{ 
 	color:whitesmoke;
 	text-transform: uppercase;
-	font-size: 1em;
+	font-size: 1.1em;
 	display: inline-block;
+	margin-left: 5%;
+}
+
+h4{}
+
+h5{}
+
+h6 {}
+
+img {
+	margin-left: 3%;
+}
+
+a{
+	margin: 5%;
+}
+
+ul{
+	margin: 0;
+	padding: 0;
+	border-bottom: 2px solid whitesmoke;
+	list-style: none;
+}
+
+li{
+	padding: 5%;
+	margin: 0;
 }
 
 td {
 	color: red;
-	padding-bottom: 2%;
 }
 
 .logo-box {
@@ -84,7 +101,6 @@ td {
 }
 
 .navbar {
-    display: table;
 	position: fixed;
     top: 75px;
     left: 0px;
@@ -92,21 +108,25 @@ td {
     width: 25%;
     background-color: #02BDBB;
     overflow: scroll;
-	border-right: 2px solid #d2d2d2;
+	border-right: 1px solid #d2d2d2;
 }
 
-.navbar .nav-list-first {
+.nav-list-first {
     position: relative;
 	min-width: 250px;
     margin: 10%;
 }
 
-.navbar .nav-list-first:hover {
-	opacity: 1.0;
-    filter: alpha(opacity=100); /* For IE8 and earlier */
+.room-list-first {
+    position: relative;
+	min-width: 250px;
+	width: 80%;
+    margin: 0 10% 0% 10%;
+	padding: 0 0 3% 0%;
+	border-bottom: 2px solid whitesmoke;
 }
 
-.navbar .sign-bar{
+.sign-bar{
 	position: relative;
 	float: inherit;
 	width: auto;
@@ -124,39 +144,37 @@ td {
     background: #007984;
 }
 
-.navbar .sign-bar:hover {
+.sign-bar:hover {
     background: #660066;
     text-decoration: none;
 }
 
-.navbar .nav-list {
+.nav-list {
     position: relative;
-	width: 80%;
-    margin: 10%;
-	border-bottom: 2px solid whitesmoke ;
+    margin: 0 10% 0 10%;
 }
 
-.navbar .nav-list-room {
-    margin: 10%;
-	height: 50px;
-    padding: 20%;
-	border-bottom: 2px solid whitesmoke ;
-}
-
-.navbar .nav-list-room:hover {
+.nav-list:hover {
 	opacity: 1.0;
     filter: alpha(opacity=100); /* For IE8 and earlier */
 	background-color: #007984;
 }
 
 .room-name{
+	position: relative;
 	color: white;
-	padding: 5%;
 	text-transform: capitalize;
+	display: inline-block;
+}
+
+.room-remove{
+	display: inline-block;
+	position: relative;
 }
 
 .user-name {
 	position: absolute;
+	display: inline-block;
     bottom: 0px;
     left: 0px;
     width:25%;
