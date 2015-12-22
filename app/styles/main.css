@@ -14,7 +14,7 @@ html {
 h1 {
     font-weight: 700;
     text-transform: uppercase;
-    color: #02BDBB;
+	color: #007984;
     font-size: 1.5rem;
     text-align: left;
 }
@@ -50,30 +50,28 @@ h4{}
 
 h5{}
 
-h6 {}
+h6{}
 
 img {
-	margin-left: 3%;
+	margin-left: 0%;
 }
 
-a{
+a {
 	margin: 5%;
 }
 
-ul{
-	margin: 0;
+ul {
+	margin: 3%;
 	padding: 0;
 	border-bottom: 2px solid whitesmoke;
+	min-width: 250px;
 	list-style: none;
 }
 
-li{
+li {
 	padding: 5%;
 	margin: 0;
-}
-
-td {
-	color: red;
+	color: aliceblue;
 }
 
 .logo-box {
@@ -84,7 +82,7 @@ td {
     height: 75px;
     padding: 10px 30px 10px 30px;
     background-color: #02BDBB;
-	border-right: 2px solid #d2d2d2;
+	border-right: 1px solid #d2d2d2;
 }
 
 .title-bar {
@@ -165,6 +163,7 @@ td {
 	color: white;
 	text-transform: capitalize;
 	display: inline-block;
+	width: 80%;
 }
 
 .room-remove{
@@ -183,7 +182,7 @@ td {
 	padding-left: 25px;
 	padding-right: 25px;
     background-color: #007984;
-	border-right: 2px solid #d2d2d2;
+	border-right: 1px solid #d2d2d2;
 }
 
 .body-pannel {
@@ -218,7 +217,42 @@ td {
     padding-right: 2%;
     padding-left: 2%;
     background-color: whitesmoke;
-    border: 1px solid #d5d5d5; 
+    border: 1px solid #d5d5d5;
+	display: inline-block;
+}
+
+.message-remove {
+	padding: 0%;
+	margin-right: 1%;
+	margin-left: 2px;
+	border: 1px;
+	width: 1%;
+	display: inline-block;
+	color: #02BDBB;
+}
+
+.message-date {
+	padding: 0%;
+	color: #d1d1d1;
+	font-style: italic;
+	font-size: 1em;
+	width: 20%;
+	display: inline-block;
+}
+
+.message-user {
+	font-size: 1.25em;
+	padding: 0%;
+	font-weight: 800;
+	width: 50%;
+	color: #02BDBB;
+	margin-left: 5%;
+}
+
+.message-content {
+	padding: 0%;
+	color: dimgrey;
+	font-weight: 300;
 }
 
 .search-bar{
