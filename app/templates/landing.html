@@ -40,13 +40,15 @@
     <!--List of all current message in a selected room-->
 	<div class="body-pannel-chat" ng-show="current.roomId">
 		<!--Message template-->
-		<ul type="list" ng-repeat="msg in messages" ng-show="current.roomId == msg.roomId">
-			<img src="/assets/images/user.png" alt="bloc chat logo">
-			<!--button that deletes message from firebase -->
-			<li class="message-remove" ng-click="chatMessages.remove(msg)" type="click">X</li>
-			<li class="message-date">{{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</li>
-			<li class="message-user">{{msg.userName}} : <span class="message-content">{{msg.content}}</span></li>
-		</ul>
+		<ol>
+			<li type="list" ng-repeat="msg in messages" ng-show="current.roomId == msg.roomId">
+				<img src="/assets/images/user.png" alt="bloc chat logo">
+				<!--button that deletes message from firebase -->
+				<div class="message-remove" ng-click="chatMessages.remove(msg)" type="click">X</div>
+				<div class="message-date">{{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</div>
+				<div class="message-user">{{msg.userName}} : <span class="message-content">{{msg.content}}</span></div>
+			</li>
+		</ol>
 	</div>
 </div>
 <!--Create a message/ footer-->

@@ -1,4 +1,5 @@
 *, *:before, *:after {
+	/*padding and border of that element no longer increase its width*/
      -moz-box-sizing: border-box;
      -webkit-box-sizing: border-box;
      box-sizing: border-box;
