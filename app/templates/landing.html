@@ -16,39 +16,41 @@
         <button class="sign-bar" class ="ng-pristine" type="submit">Go!</button>
     </form>
     <!--List of all current chat rooms-->
-    <table class="nav-list">
-		<tr class="nav-list">
-			<td>Active Rooms: {{ chatRooms.room.length }} </td>
-			<td></td>
-		</tr>
-        <tr ng-repeat="room in chatRooms.room" class="nav-list-room" >
-            <!--Current room template -->
-            <td ng-click="chatRooms.set(room)">Room {{ $index + 1 }}: {{room.name | limitTo:25 }}</td>
-            <!-- button that DELETE a room from firebase -->
-            <td ng-click="chatRooms.remove(room)" type="click">x</td>
-        </tr>
-    </table>
+	<div>
+		<h3 class="room-list-first">Active: {{ chatRooms.room.length }}</h3>
+		<ol>
+			<li type="list" class="nav-list" ng-repeat="room in chatRooms.room">
+				<!--Current room template -->
+				<p class="room-name" ng-click="chatRooms.set(room)">Room {{ $index + 1 }}: {{ room.name | limitTo:25 }}</p>
+				<!-- button that DELETE a room from firebase -->
+				<p class="room-remove" type="click" ng-click="chatRooms.remove(room)">X</p>
+			</li>
+		</ol>
+	</div>
 </nav>
 <!--User name-->
 <div class="user-name">
-	<h5>User Name: {{currentUserName.show}}</h5>
+	<img src="/assets/images/user.png" alt="bloc chat logo">
+	<h3>User Name: {{currentUserName.show}}</h3>
 </div>
 <!--Message display area-->
 <div class="body-pannel">
     <div class="hero-content" ng-hide="current.roomId">
-        <h2 class="hero-title">{{welcome}}</h2>
+        <h2>{{welcome}}</h2>
 		<p>test</p>
     </div>
     <!--List of all current message in a selected room-->
 	<div class="body-pannel-chat" ng-show="current.roomId">
-		<table ng-repeat="msg in messages" ng-show="current.roomId == msg.roomId">
-			<tr>
-				<!--Message template-->
-				<td>{{msg.userName}} {{msg.content}} {{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</td>
+		<!--Message template-->
+		<ol>
+			<li type="list" ng-repeat="msg in messages" ng-show="current.roomId == msg.roomId">
+				<img src="/assets/images/user.png" alt="bloc chat logo">
 				<!--button that deletes message from firebase -->
-				<td><button class="btn" ng-click="chatMessages.remove(msg)" type="click">x</button></td>   
-			</tr>
-    	</table>
+				<p class="message-remove" ng-click="chatMessages.remove(msg)" type="click">X</p>
+				<p class="message-date">{{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</p>
+				<p class="message-user">{{msg.userName}} : <span class="message-content">{{msg.content}}</span></p>
+			</li>
+		</ol>
 	</div>
 </div>
 <!--Create a message/ footer-->
@@ -60,5 +62,3 @@
         <button class="links-container" type="submit">Submit</button>
     </form>
 </div>
-
- 
