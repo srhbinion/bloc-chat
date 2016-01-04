@@ -18,12 +18,14 @@
     <!--List of all current chat rooms-->
 	<div>
 		<h3 class="room-list-first">Active: {{ chatRooms.room.length }}</h3>
-		<ul type="list" class="nav-list" ng-repeat="room in chatRooms.room" >
-			<!--Current room template -->
-			<li class="room-name" ng-click="chatRooms.set(room)">Room {{ $index + 1 }}: {{ room.name | limitTo:25 }}</li>
-			<!-- button that DELETE a room from firebase -->
-			<li class="room-remove" type="click" ng-click="chatRooms.remove(room)">X</li>
-		</ul>
+		<ol>
+			<li type="list" class="nav-list" ng-repeat="room in chatRooms.room">
+				<!--Current room template -->
+				<p class="room-name" ng-click="chatRooms.set(room)">Room {{ $index + 1 }}: {{ room.name | limitTo:25 }}</p>
+				<!-- button that DELETE a room from firebase -->
+				<p class="room-remove" type="click" ng-click="chatRooms.remove(room)">X</p>
+			</li>
+		</ol>
 	</div>
 </nav>
 <!--User name-->
@@ -44,9 +46,9 @@
 			<li type="list" ng-repeat="msg in messages" ng-show="current.roomId == msg.roomId">
 				<img src="/assets/images/user.png" alt="bloc chat logo">
 				<!--button that deletes message from firebase -->
-				<div class="message-remove" ng-click="chatMessages.remove(msg)" type="click">X</div>
-				<div class="message-date">{{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</div>
-				<div class="message-user">{{msg.userName}} : <span class="message-content">{{msg.content}}</span></div>
+				<p class="message-remove" ng-click="chatMessages.remove(msg)" type="click">X</p>
+				<p class="message-date">{{msg.sentAt| date:"MM/dd/yyyy 'at' h:mma"}}</p>
+				<p class="message-user">{{msg.userName}} : <span class="message-content">{{msg.content}}</span></p>
 			</li>
 		</ol>
 	</div>
