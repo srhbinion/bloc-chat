@@ -29,14 +29,13 @@ h2{
     transform: translateY(-50%);
     width: 100%;
     text-align: center;
-    font-size: 4rem;
+    font-size: 1rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5rem;
 	color: darkgray;
     /*Drop shaddow effect*/
-    text-shadow: 0 1px 0 #d2d2d2,
-		0 2px 0 #d5d5d5;
+    text-shadow: 0 1px 0 black,
 }
 
 h3{ 
@@ -205,7 +204,8 @@ li {
 .hero-content {
 	position: relative;
 	min-height: 600px;
-	top: 0px;
+	top: -75px;
+	left: 0px;
 	background-image: url(../assets/images/light.jpg);
 	background-repeat: no-repeat;
 	background-position: center center;
