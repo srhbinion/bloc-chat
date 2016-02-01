@@ -1,9 +1,7 @@
 Bloc Chat
 ========
 
-### A real-time chat client app
-
-Bloc chat is a chat application designed in AngularJS and stores the information in firebase.
+Bloc chat is a chat application designed in AngularJS and stores database information in firebase. I created block chat to deminstrate my codeing abilities.
 
 Live Preview
 ---------
@@ -11,7 +9,7 @@ Live Preview
 
 Credits
 -------
-Bloc Chat was written and designed by Sarah Binion while she attened Bloc's [Frontend Web Development Course](https://www.bloc.io/frontend-development-bootcamp).
+Bloc Chat was written and designed by [Sarah Binion](http://www.sarahbinion.com) while she attened Bloc's [Frontend Web Development Course](https://www.bloc.io/frontend-development-bootcamp).
 
 Directory Structure
 ---------
@@ -21,13 +19,16 @@ Directory Structure
 ├── LICENSE
 ├── Procfile
 ├── README.md
+├── node_modules
 ├── app
 │   ├── assets
 │   │   └── images
+│   │       └── bChat3.png
 │   │       └── bloc-logo-white.png
+│   │       └── light.jpg
+│   │       └── user.png
 │	│
-│   ├── pages
-│   │   └── index.html
+│   ├── index.html
 │	│
 │   ├── scripts
 │   │   └── angular-ui-router.js
@@ -45,8 +46,10 @@ Directory Structure
 │   └── templates
 │       └── landing.html
 │		└── myModalContent.html
+│
 ├── package.json
 └── server.js
+└── test.js
 ```
 
 Installation
