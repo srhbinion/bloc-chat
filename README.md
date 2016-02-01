@@ -1,11 +1,11 @@
 Bloc Chat
 ========
 
-Bloc chat is a chat application designed in AngularJS and stores database information in firebase. I created block chat to deminstrate my codeing abilities.
+Bloc chat is a chat application designed in AngularJS and stores database information in firebase. Bloc chat was created to deminstrate Sarah Binion's codeing abilities.
 
 Live Preview
 ---------
-* Link
+* [Link](http://www.sarahbinion.com)
 
 Credits
 -------
