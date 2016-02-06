@@ -20,7 +20,7 @@ h1 {
     text-align: left;
 }
 
-h2{
+h2 {
 	position: absolute;
 	padding: 10%;
     top: 40%;
@@ -127,7 +127,7 @@ li {
 	border-bottom: 2px solid whitesmoke;
 }
 
-.sign-bar{
+.sign-bar {
 	position: relative;
 	float: inherit;
 	width: auto;
@@ -203,7 +203,7 @@ li {
 
 .hero-content {
 	position: relative;
-	min-height: 600px;
+	min-width: 400px;
 	top: -75px;
 	left: 0px;
 	background-image: url(../assets/images/light.jpg);
@@ -227,6 +227,21 @@ li {
     border: 1px solid #d5d5d5;
 	display: inline-block;
 	overflow: scroll;
+}
+
+.astroleft {
+	position: relative;
+    top: 5em;
+    right: -3em;
+    width: 300px;
+	
+}
+
+.astroright {
+	position: fixed;
+    bottom: 3em;
+    right: 5em;
+	width: 300px;
 }
 
 .message-remove {

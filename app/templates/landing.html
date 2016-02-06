@@ -36,9 +36,13 @@
 <!--Message display area-->
 <div class="body-pannel">
     <div class="hero-content" ng-hide="current.roomId">
-		<img src="/assets/images/user.png" alt="bloc chat logo">
-        <h2>{{welcome}}</h2>
-		<p>Welcome to Bloc Chat</p>
+		<div class="astroleft">
+			<img src="/assets/images/AstroNoT2.png" alt="illustration of astronaut">
+		</div>
+        <h2><img src="/assets/images/bChat3.png" alt="bloc chat logo"><br><br>{{welcome}}</h2>
+		<div class="astroright">
+			<img src="/assets/images/AstroNoT.png" alt="illustration of astronaut" >
+		</div>
     </div>
     <!--List of all current message in a selected room-->
 	<div class="body-pannel-chat" ng-show="current.roomId">
