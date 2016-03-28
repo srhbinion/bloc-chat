@@ -150,12 +150,11 @@ li {
     margin: 0 10% 0 10%;
 	border-bottom: 2px solid whitesmoke;
 	min-width: 250px;
-}
-
-.nav-list:hover {
-	opacity: 1.0;
-    filter: alpha(opacity=100); /* For IE8 and earlier */
-	background-color: #007984;
+		&:hover {
+			opacity: 1.0;
+			filter: alpha(opacity=100); /* For IE8 and earlier */
+			background-color: #007984;
+		}
 }
 
 .room-name{
@@ -322,12 +321,13 @@ li {
     margin-left: 2%;
     background: #007984;
     text-decoration: none;  /*removes text decorations like underlines */
+	&:hover {
+		background: #660066;
+		text-decoration: none;
+	}
 }
 
-.footer-bar .links-container:hover {
-    background: #660066;
-    text-decoration: none;
-}
+
 
 .btn {
     -webkit-border-radius: 8;
