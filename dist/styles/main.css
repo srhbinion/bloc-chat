@@ -20,16 +20,14 @@ h1 {
   text-align: left; }
 
 h2 {
-  width: 50%;
   text-align: center;
   font-size: 2.5rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.5rem;
-  color: #ff5f56;
+  color: white;
   /*Drop shaddow effect*/
   text-shadow: 0 2px 2px #2e3a6c;
-    padding-left: 42%;
 }
 
 h3 {
@@ -209,9 +207,12 @@ li {
   width: 300px; 
 }
 
-.logo-name img{
-    padding-top: 45px;
-    padding-left: 45%;
+.logo-name {
+    margin: 10% 35% 10% 35%;
+    padding: 7% 3% 7% 3%;
+    border: 5px solid white;
+    border-radius: 5%;
+    
     
 }
 
