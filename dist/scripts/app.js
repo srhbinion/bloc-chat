@@ -23,12 +23,11 @@ binChat.config(function($locationProvider, $stateProvider) {
     $stateProvider
 		.state("landing",{
 			// properties of the state listed in "controller"
-			url: "index.html",
+			url: "/index.html",
 			controller:"LandingController",
 			templateUrl:"/templates/landing.html"
     });
 });
-
 /**
  * Stops the loading of the page and promps the user to sign in with a username. Cookie stores the user name information.
  * @param  {function} $cookie    - html code for displaying differnt views
@@ -56,7 +55,7 @@ binChat.controller("LandingController", ["$scope", "$firebaseArray","Room", "Mes
 	//user name
 	$scope.currentUserName = {
 		show: Message.getUser()
-	};
+	}; 
     //"room" array features
     $scope.chatRooms = {
         //accesses "room" array
