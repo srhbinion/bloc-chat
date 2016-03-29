@@ -20,21 +20,17 @@ h1 {
   text-align: left; }
 
 h2 {
-  position: absolute;
-  padding: 10%;
-  top: 40%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  transform: translateY(-50%);
-  width: 100%;
+  width: 50%;
   text-align: center;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 2.5rem;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.5rem;
-  color: darkgray;
+  color: #ff5f56;
   /*Drop shaddow effect*/
-  text-shadow: 0 1px 0 black; }
+  text-shadow: 0 2px 2px #2e3a6c;
+    padding-left: 42%;
+}
 
 h3 {
   color: whitesmoke;
@@ -133,7 +129,8 @@ li {
   margin: 0 10% 0 10%;
   border-bottom: 2px solid whitesmoke;
   min-width: 250px; }
-  .nav-list:hover {
+  
+.nav-list:hover {
     opacity: 1.0;
     filter: alpha(opacity=100);
     /* For IE8 and earlier */
@@ -209,7 +206,14 @@ li {
   position: fixed;
   bottom: 3em;
   right: 5em;
-  width: 300px; }
+  width: 300px; 
+}
+
+.logo-name img{
+    padding-top: 45px;
+    padding-left: 45%;
+    
+}
 
 .message-remove {
   padding: 0%;
